@@ -1,0 +1,97 @@
+<p style="color: green"><%= notice %></p>
+<%
+  periods       = ['1 week','2 week','1 month','6 months','1 year']
+  params_period = params[:period] || '1week'
+  period_name   = params_period.gsub(/\d/, '\\0 ')
+  quantity      = params_period.gsub(/\D/,'').to_i
+  unit          = params_period.gsub(/\d/,'')
+  start_date    = quantity.send(unit).ago.midnight
+%>
+<%= render @domain %>
+
+<div class="">
+  <%= link_to "Edit this domain", edit_domain_path(@domain) %> |
+  <%= link_to "Back to domains", domains_path %>
+
+  <%= button_to "Destroy this domain", @domain, method: :delete %>
+
+  <div class="box">
+    <nav class="level box">
+      <div class="level-item has-text-centered">
+        <div>
+          <p class="heading">Unique visitors</p>
+          <p class="title"><%= @domain.visits.pluck(:ip).uniq.size %></p>
+        </div>
+      </div>
+      <div class="level-item has-text-centered">
+        <div>
+          <p class="heading">Total pageviews</p>
+          <p class="title"><%= @domain.visits.count %></p>
+        </div>
+      </div>
+      <div class="level-item has-text-centered">
+        <div>
+          <p class="heading">TODO</p>
+          <p class="title">TODO</p>
+        </div>
+      </div>
+      <div class="level-item has-text-centered">
+        <div>
+          <p class="heading">TODO</p>
+          <p class="title">TODO</p>
+        </div>
+      </div>
+    </nav>
+
+    <div class="box">
+      <%= render(Visits.new(domain: @domain, start_date: Time.now - 1.month)) %>
+    </div>
+
+    <div class="columns is-centered my-6">
+      <div class="dropdown">
+        <div class="dropdown-trigger">
+          <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+            <span><%= period_name %></span>
+            <span class="icon is-small">
+              <i class="fas fa-angle-down" aria-hidden="true"></i>
+            </span>
+          </button>
+        </div>
+        <div class="dropdown-menu" id="dropdown-menu" role="menu">
+          <div class="dropdown-content">
+            <% periods.each do |p| %>
+              <a href="?period=<%= p.gsub(' ','') %>" class="dropdown-item <%= 'is-active' if p.gsub(' ','') == params_period %>">
+                <%= p %>
+              </a>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="columns">
+      <div class="column box">
+        <%= render(TopSources.new(domain: @domain, start_date: start_date)) %>
+      </div>
+      <div class="column box">
+        <%= render(TopPages.new(domain: @domain, start_date: start_date)) %>
+      </div>
+    </div>
+    <div class="columns">
+      <div class="column box">
+        <%= render(Devices.new(domain: @domain, start_date: start_date)) %>
+      </div>
+      <div class="column box">
+        <%= render(TopHours.new(domain: @domain, start_date: start_date)) %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%= javascript_tag do %>
+  var dropdown = document.querySelector('.dropdown');
+  dropdown.addEventListener('click', function(event) {
+    event.stopPropagation();
+    dropdown.classList.toggle('is-active');
+  });
+<% end %>

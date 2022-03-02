@@ -1,0 +1,30 @@
+<%= link_to "Back to domains", domains_path %>
+<div class="columns is-centered">
+  <div class="column is-half">
+    <h1 class="title">Create a new domain</h1>
+    <%= form_with(model: @domain) do |form| %>
+      <div class="field">
+        <label class="label">Domain url</label>
+        <div class="control">
+          <%= form.text_field :base_url, class: "input", placeholder: "Domain url" %>
+        </div>
+      </div>
+      <div class="field">
+        <label class="label">Icon</label>
+        <div class="control">
+          <%= form.text_field :icon, class: "input", placeholder: "Icon url" %>
+        </div>
+      </div>
+      <div style="color: red">
+        <ul>
+          <% @domain.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+      <div class="control">
+        <%= form.submit 'Submit', class: "button is-link" %>
+      </div>
+    <% end %>
+  </div>
+</div>

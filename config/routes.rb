@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
   resources :domains
-  post "events/event", to: 'events#event'
+  root 'domains#index'
+  post 'api/event', to: 'events#create'
 end

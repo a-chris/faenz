@@ -2,10 +2,11 @@ require 'net/http'
 
 class GeolocationIp
   class << self
-    API_KEY = 'cd647090-9755-11ec-81d6-91e0f9d27435'
+    API_KEY = Env.geoip_api_key
 
     def call(ip:)
-      ip = '93.34.226.136' if ip == "::1"
+      return {} if ip == '::1'
+
       response = Net::HTTP.get(URI("https://api.freegeoip.app/json/#{ip}?apikey=#{API_KEY}"))
       response = JSON.parse(response, symbolize_names: true)
       {
@@ -16,6 +17,8 @@ class GeolocationIp
         lat: response[:latitude],
         lng: response[:longitude]
       }
+    rescue StandardError => e
+      {}
     end
   end
 end

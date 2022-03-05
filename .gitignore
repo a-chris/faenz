@@ -42,3 +42,5 @@
 # Misc files
 .vscode
 TAGS
+
+/config/credentials/development.key

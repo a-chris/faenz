@@ -19,7 +19,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_02_26_171115) do
   end
 
   create_table "visits", force: :cascade do |t|
-    t.integer "domain_id"
+    t.integer "domain_id", null: false
     t.string "url"
     t.string "event"
     t.string "referrer"
@@ -29,6 +29,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_02_26_171115) do
     t.datetime "time_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["domain_id"], name: "index_visits_on_domain_id"
   end
 
+  add_foreign_key "visits", "domains"
 end

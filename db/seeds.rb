@@ -1,14 +1,7 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
-#   Character.create(name: "Luke", movie: movies.first)
-['https://museigratis.com', 'https://museigratis.it'].each do |url|
+['museigratis.com', 'museigratis.it'].each do |url|
   Domain.find_or_create_by!(base_url: url)
 end
-domain = Domain.find_or_create_by!(base_url: 'https://achris.me')
+domain = Domain.find_or_create_by!(base_url: 'achris.me')
 if Visit.count.zero?
   1_000.times.map do
     Visit.create!(

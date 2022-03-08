@@ -1,4 +1,3 @@
-<p style="color: green"><%= notice %></p>
 <%
   periods       = ['1 week','2 week','1 month','6 months','1 year']
   params_period = params[:period] || '1week'
@@ -14,21 +13,21 @@
     TopHours.new(domain: @domain, start_date: start_date)
   ]
 %>
+
 <%= render @domain %>
-<div class="container">
+
+<div class="container is-fluid mb-6">
   <%= link_to "Edit this domain", edit_domain_path(@domain) %> |
   <%= link_to "Back to domains", domains_path %>
   <%= button_to "Destroy this domain", @domain, method: :delete %>
-  <div class="columns my-3">
-    <div class="column is-narrow">
-      <figure class="image is-48x48">
+  <div class="block is-flex is-flex-direction-row is-justify-content-space-between is-align-items-center">
+    <div class="is-flex is-flex-direction-row is-align-items-center">
+      <figure class="image is-48x48 m-3">
         <img class="is-rounded" src="<%= @domain.icon_url %>">
       </figure>
-    </div>
-    <div class="column is-narrow">
       <h1 class="title"><%= @domain.name %></h1>
     </div>
-    <div class="column">
+    <div class="">
       <div class="dropdown">
         <div class="dropdown-trigger">
           <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
@@ -91,6 +90,7 @@
     </div>
   </div>
 </div>
+
 <%= javascript_tag do %>
   var dropdown = document.querySelector('.dropdown');
   dropdown.addEventListener('click', function(event) {

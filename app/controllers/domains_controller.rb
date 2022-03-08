@@ -1,5 +1,6 @@
 class DomainsController < ApplicationController
-  before_action :set_domain, only: %i[ show edit update destroy ]
+  before_action :authenticate_user!
+  before_action :set_domain, only: %i[show edit update destroy]
 
   # GET /domains or /domains.json
   def index

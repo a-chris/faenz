@@ -1,3 +1,5 @@
+return if Rails.env.production?
+
 ['museigratis.com', 'museigratis.it'].each do |url|
   Domain.find_or_create_by!(base_url: url)
 end

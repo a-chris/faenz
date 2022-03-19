@@ -2,3 +2,4 @@
 **/spec
 **/node_modules
 TAGS
+.env*

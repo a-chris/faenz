@@ -43,4 +43,5 @@
 .vscode
 TAGS
 
+.env*
 /config/credentials/development.key

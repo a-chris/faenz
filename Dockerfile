@@ -9,8 +9,8 @@ RUN bundle install
 RUN bundle exec rails assets:precompile
 
 COPY . .
-
-RUN RAILS_ENV=production bundle exec rails db:create db:migrate db:seed
+RUN touch _first_run
+RUN RAILS_ENV=production DISABLE_DATABASE_ENVIRONMENT_CHECK=1 bundle exec rails db:drop db:create db:migrate db:seed
 
 EXPOSE 3000
-CMD ["bundle","exec","rails","server", "-b", "0.0.0.0", "-e", "production"]
+CMD ["bundle","exec","rails","runner", "setup.rb", "-e", "production"]

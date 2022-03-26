@@ -1,4 +1,4 @@
-FROM ruby:3.0.3-alpine3.14
+FROM ruby:3.0.3-alpine3.15
 WORKDIR /faenz-analytics
 RUN apk update && apk add make build-base libffi-dev sqlite sqlite-dev
 RUN gem install bundler
@@ -10,7 +10,7 @@ RUN bundle exec rails assets:precompile
 
 COPY . .
 RUN touch _first_run
-RUN RAILS_ENV=production DISABLE_DATABASE_ENVIRONMENT_CHECK=1 bundle exec rails db:drop db:create db:migrate db:seed
+RUN RAILS_ENV=production DISABLE_DATABASE_ENVIRONMENT_CHECK=1 bundle exec rails db:drop
 
 EXPOSE 3000
 CMD ["bundle","exec","rails","runner", "setup.rb", "-e", "production"]

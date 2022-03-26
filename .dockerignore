@@ -1,5 +1,7 @@
 **/tmp
+**/log
 **/spec
 **/node_modules
 TAGS
 .env*
+db/*.sqlite3

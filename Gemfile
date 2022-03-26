@@ -7,6 +7,7 @@ gem 'rails', '~> 7.0.2'
 
 gem 'sprockets-rails'
 
+gem 'rack-cors'
 
 gem 'puma', '~> 5.0'
 

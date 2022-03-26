@@ -1,15 +1,19 @@
+# To test with:
 # ber db:drop db:create db:migrate
-# ADMIN_USERNAME=admin ADMIN_PASSWORD=test ber runner entrypoint.rb 
+# ADMIN_USERNAME=admin ADMIN_PASSWORD=test DB=sqlite ber runner setup.rb -e production
+
+first_run = false
+db_mode   = ENV['DB']
+rails_env = db_mode == 'sqlite' ? 'production_sqlite' : 'production_mysql'
 
 if File.exist?('_first_run')
-  username = ENV['ADMIN_USERNAME']
-  password = ENV['ADMIN_PASSWORD']
-  puts 'Creating a new admin user with the given username and password'
-  User.create(username: username, password: password, role: 'admin')
+  first_run = true
+  system("DISABLE_DATABASE_ENVIRONMENT_CHECK=1 RAILS_ENV=#{rails_env} bundle exec rails db:create db:migrate")
   File.delete('_first_run')
 else
   'Container already initialized.'
 end
 
-system('bundle exec rails server -d -b 0.0.0.0 -e production')
+puts "Running with environment: #{rails_env}"
+system("FIRST_RUN=#{first_run} bundle exec rails server -d -p 3000 -b 0.0.0.0 -e #{rails_env}")
 system('tail -f log/production.log')

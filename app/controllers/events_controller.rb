@@ -13,9 +13,11 @@ class EventsController < ActionController::API
       width: attrs[:w]
     }
 
-    domain_id = Domain.find_by(base_url: attrs[:domain]).id
+    domain = Domain.find_by(base_url: attrs[:domain])
+    return render json: { text: 'Domain not found' }, status: :bad_request if domain.nil?
+
     geo = GeolocationIp.call(ip: request.ip)
-    visit_attrs = attrs.except(:domain).merge(time_at: Time.now, domain_id: domain_id, ip: request.ip, geo: geo)
+    visit_attrs = attrs.except(:domain).merge(time_at: Time.now, domain_id: domain.id, ip: request.ip, geo: geo)
     Visit.create!(visit_attrs)
 
     render json: { text: 'ok' }, status: :ok

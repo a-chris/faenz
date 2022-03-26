@@ -15,7 +15,7 @@ class EventsController < ActionController::API
 
     domain_id = Domain.find_by(base_url: attrs[:domain]).id
     geo = GeolocationIp.call(ip: request.ip)
-    visit_attrs = attrs.except(:domain).merge(domain_id: domain_id, ip: request.ip, geo: geo)
+    visit_attrs = attrs.except(:domain).merge(time_at: Time.now, domain_id: domain_id, ip: request.ip, geo: geo)
     Visit.create!(visit_attrs)
 
     render json: { text: 'ok' }, status: :ok

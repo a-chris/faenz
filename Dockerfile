@@ -14,5 +14,7 @@ RUN RAILS_ENV=production DISABLE_DATABASE_ENVIRONMENT_CHECK=1 bundle exec rails 
 
 RUN RAILS_ENV=production bundle exec rails db:create db:migrate db:seed
 
+RUN RAILS_ENV=production bundle exec rails db:create db:migrate db:seed
+
 EXPOSE 3000
 CMD ["bundle","exec","rails","runner", "setup.rb", "-e", "production"]

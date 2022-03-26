@@ -22,7 +22,7 @@ class DomainsController < ApplicationController
 
   # POST /domains or /domains.json
   def create
-    @domain = Domain.new(domain_params)
+    @domain = Domain.new(user_id: current_user.id, **domain_params)
 
     respond_to do |format|
       if @domain.save

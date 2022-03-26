@@ -13,7 +13,7 @@ class EventsController < ActionController::API
       width: attrs[:w]
     }
 
-    domain_id = Domain.find_or_create_by(base_url: attrs[:domain]).id
+    domain_id = Domain.find_by(base_url: attrs[:domain]).id
     geo = GeolocationIp.call(ip: request.ip)
     visit_attrs = attrs.except(:domain).merge(domain_id: domain_id, ip: request.ip, geo: geo)
     Visit.create!(visit_attrs)

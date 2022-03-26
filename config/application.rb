@@ -22,16 +22,5 @@ module Faenz
     #
     # config.time_zone = "Central Time (US & Canada)"e
     # config.eager_load_paths << Rails.root.join("extras")
-
-    config.after_initialize do
-      if User.count.zero? && Rails.env.include?('production')
-        username = ENV['ADMIN_USERNAME']
-        password = ENV['ADMIN_PASSWORD']
-        puts "\n"
-        puts '****** Creating a new admin user with the given username and password ******'
-        puts "\n"
-        User.create!(username: username, password: password, role: 'admin')
-      end
-    end
   end
 end

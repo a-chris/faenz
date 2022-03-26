@@ -59,3 +59,5 @@ group :development do
 end
 
 gem 'dotenv', '~> 2.7'
+
+gem "mysql2", "~> 0.5.3"

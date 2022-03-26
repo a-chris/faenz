@@ -24,7 +24,7 @@ module Faenz
     # config.eager_load_paths << Rails.root.join("extras")
 
     config.after_initialize do
-      if ENV['FIRST_RUN'] == "true" && User.count.zero? && Rails.env.include?('production')
+      if User.count.zero? && Rails.env.include?('production')
         username = ENV['ADMIN_USERNAME']
         password = ENV['ADMIN_PASSWORD']
         puts "\n"

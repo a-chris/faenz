@@ -16,4 +16,4 @@ end
 
 puts "Running with environment: #{rails_env}"
 system("FIRST_RUN=#{first_run} bundle exec rails server -d -p 3000 -b 0.0.0.0 -e #{rails_env}")
-system('tail -f log/production.log')
+system("tail -f log/#{rails_env}.log")

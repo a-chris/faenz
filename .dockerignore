@@ -4,4 +4,5 @@
 **/node_modules
 TAGS
 .env*
+/scripts
 db/*.sqlite3

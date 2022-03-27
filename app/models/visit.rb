@@ -13,7 +13,7 @@ class Visit < ApplicationRecord
     elsif width < 992
       'laptop'
     else
-      'large'
+      'desktop'
     end
   end
 end

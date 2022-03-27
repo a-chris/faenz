@@ -1,5 +1,5 @@
 <%
-  periods       = ['1 week','2 week','1 month','6 months','1 year']
+  periods       = ['1 day', '1 week','2 week','1 month','6 months','1 year']
   params_period = params[:period] || '1week'
   period_name   = params_period.gsub(/\d/, '\\0 ')
   quantity      = params_period.gsub(/\D/,'').to_i
@@ -50,32 +50,7 @@
     </div>
   </div>
   <div>
-    <nav class="level box">
-      <div class="level-item has-text-centered">
-        <div>
-          <p class="heading">Unique visitors</p>
-          <p class="title"><%= @domain.visits.pluck(:ip).uniq.size %></p>
-        </div>
-      </div>
-      <div class="level-item has-text-centered">
-        <div>
-          <p class="heading">Total pageviews</p>
-          <p class="title"><%= @domain.visits.count %></p>
-        </div>
-      </div>
-      <div class="level-item has-text-centered">
-        <div>
-          <p class="heading">TODO</p>
-          <p class="title">TODO</p>
-        </div>
-      </div>
-      <div class="level-item has-text-centered">
-        <div>
-          <p class="heading">TODO</p>
-          <p class="title">TODO</p>
-        </div>
-      </div>
-    </nav>
+    <%= render(TopStats.new(domain: @domain, start_date: start_date)) %>
     <div class="box">
       <%= render(Visits.new(domain: @domain, start_date: start_date)) %>
     </div>

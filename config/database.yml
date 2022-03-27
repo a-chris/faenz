@@ -37,3 +37,6 @@ production_mysql:
   password: <%= ENV['DB_PSWD'] %>
   username: <%= ENV['DB_USER'] %>
   socket: /tmp/mysql.sock
+
+production:
+  <<: *production_mysql

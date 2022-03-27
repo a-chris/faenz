@@ -17,4 +17,21 @@ FactoryBot.define do
       icon { 'https://achris.me/favicon.ico' }
     end
   end
+
+  factory :visit do
+    sequence :url do |i|
+      "https://github.com/page_#{i}"
+    end
+    sequence :time_at do |i|
+      Time.now - i.to_i.send(:hours)
+    end
+    event { 'pageview' }
+    width { 1440 }
+    ip { '0.0.0.0' }
+    geo { {} }
+
+    trait :random_width do
+      [378, 768, 1024, 1440].sample
+    end
+  end
 end

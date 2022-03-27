@@ -26,7 +26,7 @@ production_sqlite:
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   database: db/production.sqlite3
 
-production_mysql:
+production_mysql: &production_mysql
   adapter: mysql2
   encoding: utf8
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>

@@ -4,7 +4,8 @@ require 'benchmark'
 RSpec.describe GeolocationIp do
   describe 'benchmark' do
     it 'works' do
-      domain = Domain.create!(base_url: 'example.com')
+      user = FactoryBot.create(:user)
+      domain = FactoryBot.create(:domain_example, user: user)
       100_000.times.map do
         Visit.create(
           domain_id: domain.id,

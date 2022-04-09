@@ -15,10 +15,10 @@
         </div>
       </div>
       <% if @domain.errors.any? %>
-        <div style="color: red">
+        <div class="block">
           <ul>
             <% @domain.errors.each do |error| %>
-              <li><%= error.full_message %></li>
+              <li><span class="tag is-danger is-light"><%= error.full_message %></span></li>
             <% end %>
           </ul>
         </div>

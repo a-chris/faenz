@@ -1,10 +1,8 @@
 class EventsController < ActionController::API
   def create
     attrs = params.permit(:d, :u, :n, :r, :w).to_h.with_indifferent_access
-    if (%w[d u n] - attrs.keys).any?
-      return render json: { text: 'Missing d, u or n' }, status: :bad_request
-    end
-    
+    return render json: { text: 'Missing d, u or n' }, status: :bad_request if (%w[d u n] - attrs.keys).any?
+
     attrs = {
       domain: attrs[:d],
       url: attrs[:u],
@@ -17,7 +15,8 @@ class EventsController < ActionController::API
     return render json: { text: 'Domain not found' }, status: :bad_request if domain.nil?
 
     geo = GeolocationIp.call(ip: request.ip)
-    visit_attrs = attrs.except(:domain).merge(time_at: Time.now, domain_id: domain.id, ip: request.ip, geo: geo)
+    ip = IpDigester.call(ip: request.ip)
+    visit_attrs = attrs.except(:domain).merge(time_at: Time.now, domain_id: domain.id, ip: ip, geo: geo)
     Visit.create!(visit_attrs)
 
     render json: { text: 'ok' }, status: :ok

@@ -6,9 +6,16 @@ user ||= User.create!(username: ENV['ADMIN_USERNAME'], password: ENV['ADMIN_PASS
 domain = Domain.find_or_create_by!(user_id: user.id, base_url: 'example.com')
 
 if Visit.count.zero?
-  ips_pool = 500.times.map { Faker::Internet.ip_v4_address }
-  referrers_pool = ['github.com', 'google.com', 'twitter.com', 'youtube.com', 'bing.com', 'facebook.com',
-                    'instagram.com']
+  ips_pool = 500.times.map { IpDigester.call(ip: Faker::Internet.ip_v4_address) }
+  referrers_pool = [
+    'github.com',
+    'google.com',
+    'twitter.com',
+    'youtube.com',
+    'bing.com',
+    'facebook.com',
+    'instagram.com'
+  ]
   urls_pool = [
     '',
     '/homepage',

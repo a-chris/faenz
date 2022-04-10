@@ -44,6 +44,5 @@
 TAGS
 
 .env
-.env*
 /scripts
 /config/credentials/development.key

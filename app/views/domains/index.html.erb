@@ -1,7 +1,3 @@
-<%
-  domains = Domain.all
-%>
-
 <div id="domains" class="container is-fluid">
   <h1 class="title">Domains</h1>
   <div class="block">
@@ -15,7 +11,7 @@
     </span>
   </div>
   <div class="columns is-multiline">
-    <% domains.each do |domain| %>
+    <% @domains.each do |domain| %>
       <div class="column is-6">
         <div class="box">
           <div class="columns">

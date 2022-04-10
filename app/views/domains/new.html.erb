@@ -1,4 +1,5 @@
-<div>
-  <%= link_to "Back to domains", domains_path %>
+<div class="container is-fluid mb-6">
+  <%= render 'domains/shared/back_to_domains' %>
+
+  <%= render 'domain_form', locals: { title: 'Create a new domain' } %>
 </div>
-<%= render 'domain_form', locals: { title: 'Create a new domain' } %>

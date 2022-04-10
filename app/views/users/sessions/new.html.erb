@@ -21,6 +21,9 @@
               <%= f.label :remember_me %>
             </div>
           <% end %>
+
+          <%= render "users/shared/errors", locals: { errors: [flash[:alert]] } %>
+
           <div class="actions is-flex is-justify-content-end">
             <%= f.submit "Log in", class: "button is-primary" %>
           </div>

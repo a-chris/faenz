@@ -14,15 +14,9 @@
           <%= form.text_field :icon, class: "input", placeholder: "Icon url" %>
         </div>
       </div>
-      <% if @domain.errors.any? %>
-        <div class="block">
-          <ul>
-            <% @domain.errors.each do |error| %>
-              <li><span class="tag is-danger is-light"><%= error.full_message %></span></li>
-            <% end %>
-          </ul>
-        </div>
-        <% end %>
+
+      <%= render "users/shared/errors", locals: { errors: @domain.errors.full_messages } %>
+
       <div class="control">
         <%= form.submit 'Submit', class: "button is-link" %>
       </div>

@@ -1,14 +1,14 @@
 <div id="domains" class="container is-fluid">
   <h2 class="title">Domains</h1>
   <div class="block">
-    <span class="icon-text">
-      <%= link_to new_domain_path do %>
+    <%= link_to new_domain_path do %>
+      <span class="icon-text">
         <span>New domain</span>
         <span class="icon">
           <i class="fa-solid fa-circle-plus"></i>
         </span>
-      <% end %>
-    </span>
+      </span>
+    <% end %>
   </div>
   <div class="columns is-multiline">
     <% @domains.each do |domain| %>

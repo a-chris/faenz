@@ -11,6 +11,6 @@ class Devices < ViewComponent::Base
                            .where('time_at > ?', start_date)
                            .map(&:from_device)
                            .tally
-                           .transform_values { |v| (v * 100).to_f / total_visits }
+                           .transform_values { |v| ((v * 100).to_f / total_visits).round(2) }
   end
 end

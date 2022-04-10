@@ -13,9 +13,9 @@ gem 'puma', '~> 5.0'
 
 gem 'jsbundling-rails'
 
-# gem "turbo-rails"
+gem 'turbo-rails'
 
-# gem "stimulus-rails"
+gem 'stimulus-rails'
 
 gem 'cssbundling-rails'
 
@@ -34,7 +34,7 @@ gem 'groupdate', '~> 6.0'
 
 gem 'view_component', '~> 2.49'
 
-gem 'devise', '~> 4.8'
+gem 'devise', github: 'heartcombo/devise', branch: 'main'
 
 group :production_sqlite do
   gem 'sqlite3', '~> 1.4'
@@ -42,15 +42,15 @@ end
 
 # Temporary turned off
 group :production, :production_mysql do
-  gem "mysql2", "~> 0.5.3"
+  gem 'mysql2', '~> 0.5.3'
 end
 
 group :development, :test do
   gem 'benchmark', '~> 0.2.0'
   gem 'debug', platforms: %i[mri mingw x64_mingw]
+  gem 'factory_bot_rails', '~> 6.2'
   gem 'faker', '~> 2.19'
   gem 'rspec-rails', '~> 5.0.0'
-  gem "factory_bot_rails", "~> 6.2"
 end
 
 group :development do

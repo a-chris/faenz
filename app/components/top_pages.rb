@@ -1,4 +1,4 @@
-class TopPages < ViewComponent::Base
+class TopPages < BaseChart
   attr_reader :series
 
   def initialize(domain:, start_date:)

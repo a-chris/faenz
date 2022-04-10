@@ -1,4 +1,4 @@
-class Visits < ViewComponent::Base
+class Visits < BaseChart
   def initialize(domain:, start_date:, options: {})
     @domain     = domain
     @start_date = start_date

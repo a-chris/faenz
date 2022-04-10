@@ -1,4 +1,4 @@
-class TopLocations < ViewComponent::Base
+class TopLocations < BaseChart
   def initialize(domain:, start_date:)
     @domain     = domain
     @start_date = start_date

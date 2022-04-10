@@ -1,3 +1,6 @@
+$primary: #B33951;
+$link: #B33951;
+
 @import 'bulma/bulma';
 
 $fa-font-path: '@fortawesome/fontawesome-free/webfonts';
@@ -27,4 +30,9 @@ $fa-font-path: '@fortawesome/fontawesome-free/webfonts';
 
 .main-title {
   font-family: 'IBM Plex Mono';
+}
+
+// Overriding Bulma's default styles
+.navbar-burger {
+  color: black;
 }

@@ -1,4 +1,4 @@
-class TopHours < ViewComponent::Base
+class TopHours < BaseChart
 
   attr_reader :series
 

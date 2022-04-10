@@ -12,7 +12,7 @@
         <span aria-hidden="true"></span>
       </a>
     </div>
-    <div id="navbar_menu" class="navbar-menu" style="position:absolute;right:0;">
+    <div id="navbar_menu" class="navbar-menu">
       <div class="navbar-end">
         <div class="navbar-item">
           <div class="buttons">
@@ -48,6 +48,13 @@
           // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
           el.classList.toggle('is-active');
           $target.classList.toggle('is-active');
+
+          if ($target.classList.contains('is-active')) {
+            $target.style.position = "absolute";
+            $target.style.right = 0;
+          } else {
+            $target.style.position = "";
+          }
         });
       });
     }

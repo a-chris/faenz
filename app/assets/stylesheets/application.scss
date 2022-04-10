@@ -1,6 +1,30 @@
+@import 'bulma/bulma';
+
 $fa-font-path: '@fortawesome/fontawesome-free/webfonts';
 @import '@fortawesome/fontawesome-free/scss/fontawesome';
 @import '@fortawesome/fontawesome-free/scss/solid';
 @import '@fortawesome/fontawesome-free/scss/regular';
 @import '@fortawesome/fontawesome-free/scss/brands';
 @import '@fortawesome/fontawesome-free/scss/v4-shims';
+
+@font-face {
+  font-family: 'IBM Plex Mono';
+  src: url(font-path('IBMPlexMono-Bold.ttf'));
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'BarlowSemiCondensed';
+  src: url(font-path('BarlowSemiCondensed-Regular.ttf'));
+  font-weight: regular;
+  font-style: normal;
+}
+
+* {
+  font-family: 'Barlow';
+}
+
+.main-title {
+  font-family: 'IBM Plex Mono';
+}

@@ -2,11 +2,11 @@
   <nav class="navbar has-background-primary" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
       <a class="navbar-item" href="https://github.com/a-chris/faenz">
-        <h1 class="main-title title is-4" style="color:black;">
+        <h1 class="main-title title is-4 has-text-black">
           {Faenz}
         </h1>
       </a>
-      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbar_menu">
+      <a role="button" class="navbar-burger has-text-black" aria-label="menu" aria-expanded="false" data-target="navbar_menu">
         <span aria-hidden="true"></span>
         <span aria-hidden="true"></span>
         <span aria-hidden="true"></span>
@@ -18,7 +18,7 @@
           <div class="buttons">
             <% if user_signed_in? %>
               <a class="navbar-item" style="background-color:inherit !important;">
-                <%= button_to "Logout", destroy_user_session_path, method: :delete, class: 'button is-text'  %>
+                <%= button_to "Logout", destroy_user_session_path, method: :delete, class: 'button is-text has-text-black'  %>
               </a>
             <% end %>
           </div>

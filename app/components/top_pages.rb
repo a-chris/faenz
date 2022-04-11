@@ -5,7 +5,7 @@ class TopPages < BaseChart
     @domain     = domain
     @start_date = start_date
     @series     = @domain.visits
-                         .where('time_at > ?', start_date)
+                         .where('time_at >= ?', start_date)
                          .pluck(:url)
                          .tally
                          .sort_by { |_, v| -v }

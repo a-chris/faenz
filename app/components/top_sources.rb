@@ -4,7 +4,7 @@ class TopSources < BaseChart
     @start_date = start_date
     @series     = @domain.visits
                          .where.not(referrer: nil)
-                         .where('time_at > ?', start_date)
+                         .where('time_at >= ?', start_date)
                          .pluck(:referrer)
                          .tally
                          .sort_by { |_, v| -v }

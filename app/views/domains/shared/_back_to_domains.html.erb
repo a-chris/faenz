@@ -1,8 +1,10 @@
 <div class="block">
-  <span class="icon-text">
-    <span class="icon">
-      <i class="fa-solid fa-lg fa-arrow-left"></i>
+  <%= link_to domains_path do %>
+    <span class="icon-text">
+      <span class="icon">
+        <i class="fa-solid fa-lg fa-arrow-left"></i>
+      </span>
+      <span>Back to domains</span>
     </span>
-    <span><%= link_to "Back to domains", domains_path %></span>
-  </span>
+  <% end %>
 </div>

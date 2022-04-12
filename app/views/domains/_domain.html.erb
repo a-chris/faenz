@@ -16,29 +16,33 @@
 %>
 
 <div id="<%= dom_id domain %>">
-  <div class="block is-flex is-flex-direction-row is-justify-content-space-between is-align-items-center">
-    <div class="is-flex is-flex-direction-row is-align-items-center">
-      <figure class="image is-48x48 m-3">
-        <img class="is-rounded" src="<%= @domain.icon_url %>">
-      </figure>
+  <div class="block is-flex is-flex-wrap-wrap is-flex-direction-row is-justify-content-space-between is-align-items-center">
+    <div class="is-flex is-flex-wrap-wrap is-flex-direction-row is-align-items-center">
+      <div class="is-flex is-align-items-center">
+        <figure class="image is-48x48 m-3">
+          <img class="is-rounded" src="<%= @domain.icon_url %>">
+        </figure>
 
-      <h2 class="title"><%= @domain.name %></h1>
+        <h2 class="title is-3"><%= @domain.name %></h1>
+      </div>
 
-      <%# EDIT DOMAIN BUTTON %>
-      <%= link_to(edit_domain_path(@domain), class: "p-3") do %>
-        <span class="icon" style="margin-bottom:18px;">
-          <i class="fa-regular fa-lg fa-pen-to-square"></i>
-        </span>
-      <% end %>
+      <div class="is-flex is-align-items-center">
+        <%# EDIT DOMAIN BUTTON %>
+        <%= link_to(edit_domain_path(@domain), class: "p-3") do %>
+          <span class="icon" style="margin-top:10px;">
+            <i class="fa-regular fa-lg fa-pen-to-square"></i>
+          </span>
+        <% end %>
 
-      <%# DELETE DOMAIN BUTTON %>
-      <%= link_to(domain_path(@domain), data: { "turbo-method": :delete, turbo_confirm: 'Are you certain you want to delete this domain?' }) do %>
-        <span class="icon" style="margin-bottom:18px;">
-          <i class="fa-solid fa-lg fa-trash"></i>
-        </span>
-      <% end %>
+        <%# DELETE DOMAIN BUTTON %>
+        <%= link_to(domain_path(@domain), data: { "turbo-method": :delete, turbo_confirm: 'Are you certain you want to delete this domain?' }) do %>
+          <span class="icon" style="margin-top:10px;">
+            <i class="fa-solid fa-lg fa-trash"></i>
+          </span>
+        <% end %>
+      </div>
     </div>
-    <div class="">
+    <div class="is-flex is-align-self-flex-end">
       <div class="dropdown">
         <div class="dropdown-trigger">
           <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">

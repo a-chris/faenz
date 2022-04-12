@@ -1,3 +1,7 @@
+<%
+  start_date = 1.day.ago.midnight
+%>
+
 <div id="domains" class="container is-fluid">
   <h2 class="title">Domains</h1>
   <div class="block">
@@ -12,9 +16,13 @@
   </div>
   <div class="columns is-multiline">
     <% @domains.each do |domain| %>
+      <%
+        pageviews = domain.visits.where('time_at >= ?', start_date).count
+        unique_visitors = domain.visits.where('time_at >= ?', start_date).pluck(:ip).uniq.size
+      %>
       <div class="column is-6">
         <div class="box">
-          <div class="columns">
+          <div class="columns is-mobile">
             <div class="column is-narrow">
               <figure class="image is-48x48">
                 <img class="is-rounded" src="<%= domain.icon_url %>">
@@ -24,14 +32,15 @@
               <%= link_to domain.base_url, domain, class: "title is-4" %>
             </div>
           </div>
-          <div>
-            <%= render(Visits.new(domain: domain, start_date: Time.now - 1.week, options: { show_only_line: true, width: "100px", height: "30px" })) %>
-            <p>
-              stats here
-            </p>
-            <p>
-              stats here
-            </p>
+          <div class="is-flex">
+            <div class="pr-4">
+              <%= render(Visits.new(domain: domain, start_date: start_date, options: { show_only_line: true, width: "120px", height: "40px" })) %>
+            </div>
+
+            <div>
+              <p><%= pageviews %> page views</p>
+              <p><%= unique_visitors %> unique visitors</p>
+            </div>
           </div>
         </div>
       </div>

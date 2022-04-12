@@ -11,3 +11,5 @@ Chart.register(ChartDataLabels);
 Chart.defaults.set("plugins.datalabels", {
   color: "transparent",
 });
+
+Chart.defaults.font.size = 14;

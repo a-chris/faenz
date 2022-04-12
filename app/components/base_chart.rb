@@ -5,8 +5,8 @@ class BaseChart < ViewComponent::Base
   @@options = {
     library: {
       scales: {
-        x: { ticks: { color: @@default_text_color, font: { family: 'Barlow', weight: 'bold' } } },
-        y: { ticks: { color: @@default_text_color, font: { family: 'Barlow', weight: 'bold' } } }
+        x: { ticks: { color: @@default_text_color, font: { family: 'Barlow' } } },
+        y: { ticks: { color: @@default_text_color, font: { family: 'Barlow' } } }
       }
     }
   }

@@ -3,7 +3,7 @@ return if Rails.env != 'development'
 user = User.find_by(username: ENV['ADMIN_USERNAME'])
 user ||= User.create!(username: ENV['ADMIN_USERNAME'], password: ENV['ADMIN_PASSWORD'])
 
-domain = Domain.find_or_create_by!(user_id: user.id, base_url: 'example.com', icon: 'https://www.example.com/favicon.ico')
+domain = Domain.find_or_create_by!(user_id: user.id, base_url: 'example.com', icon: 'https://www.github.com/favicon.ico')
 
 if Visit.count.zero?
   ips_pool = 500.times.map { IpDigester.call(ip: Faker::Internet.ip_v4_address) }

@@ -31,7 +31,7 @@ production_mysql: &production_mysql
   encoding: utf8
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   timeout: 5000
-  database: <%= ENV.fetch("DB_NAME") { faenz } %>
+  database: <%= ENV.fetch("DB_NAME") { 'faenz' } %>
   host: <%= ENV['DB_HOST'] %>
   port: <%= ENV['DB_PORT'] %>
   password: <%= ENV['DB_PSWD'] %>

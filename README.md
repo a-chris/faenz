@@ -59,11 +59,11 @@ You can selfhost Faenz just by using the docker image and running it with the ri
 
 ## Deploy on Heroku
 
-The project has been written with Heroku in mind to it should be easy and not require much skills to setup.
+The project has been written with Heroku in mind to it should be easy and not require much skills to setup. Deploying to Heroku requires a remote MySQL database instance since [Heroku can't host a SQLite database](https://devcenter.heroku.com/articles/sqlite3), so you have to setup the database credentials using Heroku variables.
 
 1. Fork this project
 2. Link your fork repository to Heroku
-3. Setup the variables required
+3. Setup the required variables on the Heroku project dashboard or by using the CLI
 
 - BUNDLE_WITHOUT => development:test:production_sqlite
 - DB => mysql
@@ -96,7 +96,7 @@ docker run -p 3000:3000 -e DB=sqlite -e ADMIN_USERNAME=admin -e ADMIN_PASSWORD=t
 ### MySQL
 
 By running Faenz with the MySQL database creates a connection to a "remote" MySQL or MariaDB database where all the data will be stored. This means that the database can be on another machine or server for wich you have to specify the public IP Address and the port, or it can just be a local service or docker container on the same machine, for wich you can specify "localhost" and the port.
-At the moment it works like this because the MySQL mdoe is also used by the Heroku deployment to connect to a remote database, since [Heroku can't host a SQLite database](https://devcenter.heroku.com/articles/sqlite3).
+At the moment the MySQL mode is also used by Heroku to connect to a remote database.
 The required variables to use Faenz with MySQL/MariaDB are:
 
 - DB=mysql

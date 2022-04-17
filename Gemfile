@@ -34,7 +34,7 @@ gem 'groupdate', '~> 6.0'
 
 gem 'view_component', '~> 2.49'
 
-gem 'devise', github: 'heartcombo/devise', branch: 'main'
+gem 'devise', '~> 4.8'
 
 group :production_sqlite do
   gem 'sqlite3', '~> 1.4'

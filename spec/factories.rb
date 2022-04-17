@@ -28,6 +28,7 @@ FactoryBot.define do
     event { 'pageview' }
     width { 1440 }
     ip { '0.0.0.0' }
+    referrer { 'https://google.com/' }
     geo { {} }
 
     trait :random_width do

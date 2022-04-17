@@ -2,6 +2,15 @@ class Visit < ApplicationRecord
   belongs_to :domain
 
   serialize :geo, JSON
+  before_save :clean_referrer
+
+  # callbacks
+
+  def clean_referrer
+    self.referrer = self.referrer.gsub(%r{/$}, '')
+  end
+
+  # methods
 
   def from_device
     return 'unknown' if width.blank?

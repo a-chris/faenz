@@ -6,6 +6,7 @@ class TopSources < BaseChart
                          .where.not(referrer: nil)
                          .where('time_at >= ?', start_date)
                          .pluck(:referrer)
+                         .map { |r| r.gsub(%r{/$}, '') }
                          .tally
                          .sort_by { |_, v| -v }
                          .first(10)

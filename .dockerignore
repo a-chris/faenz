@@ -6,3 +6,6 @@ TAGS
 .env*
 /scripts
 db/*.sqlite3
+
+config/credentials.yml.enc
+config/master.key

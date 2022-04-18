@@ -45,3 +45,4 @@ TAGS
 
 /scripts
 /config/credentials/development.key
+/config/credentials.yml.enc

@@ -15,5 +15,5 @@ else
 end
 
 puts "Running with environment: #{rails_env}"
-system("FIRST_RUN=#{first_run} bundle exec rails server -d -p 3000 -b 0.0.0.0 -e #{rails_env}")
+system("RAILS_ENV=#{rails_env} bundle exec rails s -d -e #{rails_env} -p 3000 -b 0.0.0.0")
 system("tail -f log/#{rails_env}.log")

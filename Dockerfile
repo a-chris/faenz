@@ -9,10 +9,10 @@ COPY Gemfile .
 COPY Gemfile.lock .
 RUN bundle install
 RUN bundle exec rails assets:precompile
-RUN export SECRET_KEY_BASE=$(bundle exec rails secret)
 
 COPY . .
 RUN touch _first_run
+RUN EDITOR="notexist" bin/rails credentials:edit
 
 EXPOSE 3000
 CMD ["bundle","exec","rails","runner", "setup.rb"]

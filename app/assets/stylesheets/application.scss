@@ -5,20 +5,20 @@ $link: #B33951;
 
 @font-face {
   font-family: 'IBM Plex Mono';
-  src: url(font-path('IBMPlexMono-Bold.ttf'));
+  src: url('IBMPlexMono-Bold.ttf');
   font-weight: bold;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'BarlowSemiCondensed';
-  src: url(font-path('BarlowSemiCondensed-Regular.ttf'));
+  src: url('BarlowSemiCondensed-Regular.ttf');
   font-weight: regular;
   font-style: normal;
 }
 
 * {
-  font-family: 'Barlow';
+  font-family: 'BarlowSemiCondensed';
 }
 
 .main-title {

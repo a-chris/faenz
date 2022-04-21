@@ -35,7 +35,7 @@ that's all. Go to your Faenz dashboard and enjoy the realtime statistics.
 
 ## Server side
 
-A new intriguing solution: server-side analytics. You can send HTTP request from your server directly to Faenz to collect data regarding user visits, just like before, but being sure that every visit is collected and not blocked by an ad-blocker or because the user has turned off Javascript.
+A new intriguing solution: server-side analytics. You can send HTTP request from your server directly to Faenz to collect data regarding user visits, like before, but being sure that every visit is collected and not blocked by an ad-blocker or because the user has turned off Javascript.
 
 Moreover, you can use Faenz to collect data about how your code is working, for example I have some period tasks which run on my VPS and I'm using Faenz to log when the tasks run and what's the output. Of course, doing this, the width, referrer, etc.. is going to stay empty and unused.
 
@@ -136,10 +136,10 @@ docker build --tag faenz .
 
 # TODO
 
-- [ ] Release public Docker images
+- [x] Release public Docker images
 - [ ] Screenshots, presentation and demo of Faenz
 - [ ] Support import and export of data, also compatible with Plausible exports
-- [ ] Allowing to collect extra and complex fields
+- [ ] Allow to collect extra and complex fields
 - [ ] Configurable charts (hide or add some charts)
 - [ ] Remove the NodeJS dependency by using a multi-stage Docker build
 - [ ] Improve UI, design, fonts, colors
@@ -148,4 +148,4 @@ docker build --tag faenz .
 
 # Contributing
 
-Contributing to Faenz should be fair easy if you know Ruby on Rails. It's a really simple web server with controllers and Rails views. For the charts I've been using ViewComponent library, to keep each chart logic testable and apart.
+Contributing to Faenz should be fair easy if you know Ruby on Rails. It's a really simple web server with controllers and Rails views. For the charts I've been using the ViewComponent library, to keep each chart logic testable and separated.

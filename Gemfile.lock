@@ -200,6 +200,8 @@ GEM
       rspec-mocks (~> 3.10)
       rspec-support (~> 3.10)
     rspec-support (3.11.0)
+    sass-rails (6.0.0)
+      sassc-rails (~> 2.1, >= 2.1.1)
     sassc (2.4.0)
       ffi (~> 1.9)
     sassc-rails (2.1.2)
@@ -267,7 +269,7 @@ DEPENDENCIES
   rack-cors
   rails (~> 7.0.2)
   rspec-rails (~> 5.0.0)
-  sassc-rails
+  sass-rails
   sprockets-rails
   sqlite3 (~> 1.4)
   stimulus-rails

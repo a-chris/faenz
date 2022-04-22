@@ -7,7 +7,7 @@ class Visit < ApplicationRecord
   # callbacks
 
   def clean_referrer
-    self.referrer = self.referrer.gsub(%r{/$}, '')
+    self.referrer = self.referrer&.gsub(%r{/$}, '')
   end
 
   # methods

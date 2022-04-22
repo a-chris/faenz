@@ -53,28 +53,56 @@ For this you just need to send HTTP `POST` requests to `https://myfaenz.com/api/
 
 I'm planning to support more fields in the future for more advanced use cases.
 
-# How to selfhost/deploy
+# How to selfhost/deploy Faenz
 
 You can selfhost Faenz just by using the docker image and running it with the right environment variables. Faenz supports both SQLite and MySQL/MariaDB databases, follow the instructions in the next paragraphs.
 
-## Deploy on Heroku
+## Heroku
 
 The project has been written with Heroku in mind to it should be easy and not require much skills to setup. Deploying to Heroku requires a remote MySQL database instance since [Heroku can't host a SQLite database](https://devcenter.heroku.com/articles/sqlite3), so you have to setup the database credentials using Heroku variables.
 
 1. Fork this project
-2. Link your fork repository to Heroku
-3. Setup the required variables on the Heroku project dashboard or by using the CLI
+2. Add your fork repository to Heroku
+3. Setup the required variables on the Heroku project dashboard or by using the CLI:
 
 - BUNDLE_WITHOUT => development:test:production_sqlite
 - DB => mysql
-- ADMIN_PASSWORD
 - ADMIN_USERNAME
+- ADMIN_PASSWORD
 - DB_HOST
 - DB_PORT
-- DB_PSWD
 - DB_USER
+- DB_PSWD
 
 4. Deploy on Heroku
+
+The standard name for the database will be `faenz`, if you want to give a different name you can use the environment variable `DB_NAME`.
+
+## Render
+
+[Render](https://render.com) is an Heroku alternative that I found out only recently but is pretty convenient to deploy Ruby on Rails applications. The setup is very similar to the Heroku one.
+As far as I know, you can host a SQLite database on render only with paid plans because with the free plan you don't get access to the file system so you need to use the MySQL solution to persist your data.
+
+1. Fork this project
+2. Add your fork repository to Render and during the setup select:
+
+- **Environment** => **Ruby**
+- **Build command** => `./bin/render-build.sh`
+
+3. Setup the required variables:
+
+- BUNDLE_WITHOUT => development:test:production_sqlite
+- DB => mysql
+- ADMIN_USERNAME
+- ADMIN_PASSWORD
+- DB_HOST
+- DB_PORT
+- DB_USER
+- DB_PSWD
+
+4. Deploy on Render
+
+The standard name for the database will be `faenz`, if you want to give a different name you can use the environment variable `DB_NAME`
 
 ## Run as a Docker container
 
@@ -137,13 +165,13 @@ docker build --tag faenz .
 # TODO
 
 - [x] Release public Docker images
+- [x] Make Faenz hostable on [Render](https://render.com)
 - [ ] Screenshots, presentation and demo of Faenz
 - [ ] Support import and export of data, also compatible with Plausible exports
 - [ ] Allow to collect extra and complex fields
 - [ ] Configurable charts (hide or add some charts)
 - [ ] Remove the NodeJS dependency by using a multi-stage Docker build
 - [ ] Improve UI, design, fonts, colors
-- [ ] Test if Faenz can be hosted on Render
 - [ ] Test if Faenz works with Heroku Postgres free-tier and in general with Prostgres database
 
 # Contributing

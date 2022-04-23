@@ -1,15 +1,16 @@
-$primary: #B33951;
-$link: #B33951;
+$primary: #ff5778;
+$link: #ff5778;
 
 @import 'bulma/bulma';
 
 @font-face {
-  font-family: 'BarlowSemiCondensed';
-  src: url('BarlowSemiCondensed-Regular.ttf');
+  font-family: 'Barlow';
+  src: url('Barlow.woff2') format('woff2'),
+       url('Barlow.woff') format('woff');
   font-weight: regular;
   font-style: normal;
 }
 
 * {
-  font-family: 'BarlowSemiCondensed';
+  font-family: 'Barlow';
 }

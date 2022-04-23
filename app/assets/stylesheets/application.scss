@@ -4,13 +4,6 @@ $link: #B33951;
 @import 'bulma/bulma';
 
 @font-face {
-  font-family: 'IBM Plex Mono';
-  src: url('IBMPlexMono-Bold.ttf');
-  font-weight: bold;
-  font-style: normal;
-}
-
-@font-face {
   font-family: 'BarlowSemiCondensed';
   src: url('BarlowSemiCondensed-Regular.ttf');
   font-weight: regular;
@@ -19,8 +12,4 @@ $link: #B33951;
 
 * {
   font-family: 'BarlowSemiCondensed';
-}
-
-.main-title {
-  font-family: 'IBM Plex Mono';
 }

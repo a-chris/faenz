@@ -2,6 +2,14 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :null_session
   before_action :init_user, only: :new
 
+  def index
+    if current_user.nil? && ENV['DEMO_MODE'] == 'true'
+      redirect_to demo_path
+    else
+      redirect_to domains_path
+    end
+  end
+
   def init_user
     if User.count.zero?
       username = ENV['ADMIN_USERNAME']

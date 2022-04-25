@@ -1,0 +1,25 @@
+<%
+  autofocus = locals[:autofocus] ? "autofocus" : nil
+%>
+
+<div class="box p-5">
+  <h2 class="subtitle has-text-weight-bold">Log in</h2>
+  <%= form_for(:user, as: :user, url: session_path(:user)) do |f| %>
+    <div class="field">
+      <%= f.label :username%><br />
+      <%= f.text_field :username, autofocus: autofocus, autocomplete: "username", class: "input is-primary" %>
+    </div>
+    <div class="field">
+      <%= f.label :password %><br />
+      <%= f.password_field :password, autocomplete: "current-password", class: "input is-primary" %>
+    </div>
+
+    <%= render "users/shared/errors", locals: { errors: [flash[:alert]] } %>
+
+    <%= render "users/sessions/demo_message" if ENV['DEMO_MODE'] == "true" %>
+
+    <div class="actions is-flex is-justify-content-end">
+      <%= f.submit "Log in", class: "button is-primary" %>
+    </div>
+  <% end %>
+</div>

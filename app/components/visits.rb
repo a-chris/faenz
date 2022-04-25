@@ -5,10 +5,12 @@ class Visits < BaseChart
     @options    = @@options.merge(options)
     @series     = @domain.visits.group_by_day(:time_at, range: start_date..Time.now).count
 
-    if @options.delete(:show_only_line)
+    @options.merge!(points: false)
+
+    if @options.delete(:show_line_only)
       @options.merge!(
         {
-          points: false, legend: false,
+          legend: false,
           library: {
             scales: {
               x: { grid: { display: false, drawBorder: false }, ticks: { display: false } },

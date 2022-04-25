@@ -1,0 +1,51 @@
+<%
+  chart = Visits.new(domain: @domain, start_date: @start_date, options: { show_line_only: true })
+  chart = TopStats.new(domain: @domain, start_date: @start_date) if chart.series.values.sum.zero?
+%>
+
+<div class="container my-6">
+  <div class="container">
+    <h1 class="title has-text-centered">{Faenz}</h1>
+  </div>
+
+  <div class="section">
+    <p class="is-size-5">Faenz is a simple, open source, lightweight and privacy friendly web analytics, alternative to Google Analytics, similar to Plausible but simpler and smaller. GDPR Compliant. Cookie-free.</p>
+    <p class="is-size-5">Written with Ruby on Rails 💎.</p>
+    <div class="py-3"></div>
+    <p class="is-size-6">Visits since <%= @start_date.strftime('%d %B %Y') %>:</p>
+    <%= render(chart) %>
+  </div>
+
+  <div class="section">
+    <div class="content is-medium">
+      <h2 class="has-text-centered">Why choose Faenz?</h2>
+
+      <div class="box">
+        <h3>👨🏻‍💻 Open Source</h3>
+        <p>All the source code is available on <a href="https://github.com/a-chris/faenz">GitHub</a>, you can contribute to the project and report any issue.</p>
+      </div>
+
+      <div class="box">
+        <h3>🕵🏻‍♀️ Privacy Friendly</h3>
+        <p>Faenz is GDPR compliant, does not use cookie and does not track the single user activities. You can use Faenz without the need to show a cookie banner. Perfect to track analytics of hobby projects and small businesses.</p>
+      </div>
+
+      <div class="box">
+        <h3>🚀 Lightweight and easy to deploy</h3>
+        <p>Faenz can run on a small server with 1 CPU and 512 Mb of RAM or even less. You can choose the database solution that better fits your budget, MySQL if you already own an instance or SQLite if you need to save resources.</p>
+        <p>Don't want to self-host? No worries, you can deploy Faenz on services like Heroku and Render.</p>
+      </div>
+    </div>
+  </div>
+  <hr/>
+  <div class="section">
+    <p class="is-size-5 has-text-centered">Want to give a try?</p>
+    <p class="is-size-5 mb-5 has-text-centered">Login to the demo page to get further analytics data about this domain! 😀</p>
+
+    <div class="columns is-centered">
+      <div class="column is-half" style="max-width: 500px;">
+        <%= render 'users/sessions/form', locals: { autofocus: false } %>
+      </div>
+    </div>
+  </div>
+</div>

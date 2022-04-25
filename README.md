@@ -1,4 +1,4 @@
-**Faenz** is a simple, open source, lightweight and privacy friendly web analytics, alterative to Google Analytics, just like [Plausible](https://plausible.io/) but simpler and smaller. GDPR Compliant. Cookie-free. Hostable on Heroku or your personal server with Docker images. Written with Ruby on Rails.
+**Faenz** is a simple, open source, lightweight and privacy friendly web analytics, alternative to Google Analytics, similar [Plausible](https://plausible.io/) but simpler and smaller. GDPR Compliant. Cookie-free. Hostable on Heroku or your personal server with Docker images. Written with Ruby on Rails.
 
 ![dashboard](readme/dashboard.jpeg)
 
@@ -166,7 +166,8 @@ docker build --tag faenz .
 
 - [x] Release public Docker images
 - [x] Make Faenz hostable on [Render](https://render.com)
-- [ ] Screenshots, presentation and demo of Faenz
+- [x] Screenshots, presentation and demo of Faenz
+- [ ] Dark theme
 - [ ] Support import and export of data, also compatible with Plausible exports
 - [ ] Allow to collect extra and complex fields
 - [ ] Configurable charts (hide or add some charts)

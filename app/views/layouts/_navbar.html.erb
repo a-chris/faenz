@@ -16,11 +16,13 @@
       <div class="navbar-end">
         <div class="navbar-item">
           <div class="buttons">
-            <% if user_signed_in? %>
-              <a class="navbar-item" style="background-color:inherit !important;">
-                <%= button_to "Logout", destroy_user_session_path, method: :delete, class: 'button is-light has-text-black'  %>
-              </a>
-            <% end %>
+            <a class="navbar-item" style="background-color:inherit !important;">
+              <% if user_signed_in? %>
+                <%= button_to "Logout", destroy_user_session_path, method: :delete, class: 'button is-light has-text-black m-0'  %>
+              <% else %>
+                <%= button_to "Login", new_user_session_path, class: 'button is-light has-text-black m-0'  %>
+              <% end %>
+            </a>
           </div>
         </div>
       </div>

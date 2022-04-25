@@ -44,5 +44,6 @@
 TAGS
 
 /scripts
-/config/credentials/development.key
-/config/credentials.yml.enc
+/config/*.enc
+/config/credentials/*.enc
+/config/credentials/*.key

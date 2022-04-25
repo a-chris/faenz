@@ -32,10 +32,10 @@ production_mysql: &production_mysql
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   timeout: 5000
   database: <%= ENV.fetch("DB_NAME") { 'faenz' } %>
-  host: <%= ENV['DB_HOST'] %>
-  port: <%= ENV['DB_PORT'] %>
-  password: <%= ENV['DB_PSWD'] %>
-  username: <%= ENV['DB_USER'] %>
+  host: <%= ENV.fetch('DB_HOST') { Rails.application.credentials[:DB_HOST] } %>
+  port: <%= ENV.fetch('DB_PORT') { Rails.application.credentials[:DB_PORT] } %>
+  password: <%= ENV.fetch('DB_PSWD') { Rails.application.credentials[:DB_PSWD] } %>
+  username: <%= ENV.fetch('DB_USER') { Rails.application.credentials[:DB_USER] } %>
   socket: /tmp/mysql.sock
 
 production:

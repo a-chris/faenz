@@ -5,6 +5,16 @@ class Domain < ApplicationRecord
   validate :validate_base_url
   validate :validate_icon
 
+  before_save :clean_base_url
+
+  # callbacks
+
+  def clean_base_url
+    self.base_url = self.base_url&.gsub(%r{/$}, '')
+  end
+
+  # methods
+
   def name
     base_url.gsub(%r{^https://}, '').gsub(%r{/$}, '')
   end

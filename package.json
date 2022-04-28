@@ -6,6 +6,7 @@
     "@hotwired/stimulus": "^3.0.1",
     "@hotwired/turbo-rails": "^7.1.1",
     "bulma": "^0.9.3",
+    "bulma-prefers-dark": "^0.1.0-beta.1",
     "chart.js": "^3.7.1",
     "chartjs-plugin-datalabels": "^2.0.0",
     "chartkick": "^4.1.1",

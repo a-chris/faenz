@@ -1,8 +1,15 @@
 class TopHours < BaseChart
-
   def initialize(domain:, start_date:)
     @domain     = domain
     @start_date = start_date
-    @series     = (0...23).to_h { |hour| [hour, 0] }.merge(@domain.visits.where('time_at >= ?', @start_date).pluck(:time_at).map(&:to_datetime).map(&:hour).tally)
+    all_hours = (0...23).to_h { |hour| [hour, 0] }
+    @series = all_hours.merge(
+      @domain.visits
+      .where('time_at >= ?', @start_date)
+      .pluck(:time_at)
+      .map(&:to_datetime)
+      .map(&:hour)
+      .tally
+    )
   end
 end

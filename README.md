@@ -148,9 +148,7 @@ Be sure to have all the Ruby dependencies installed with
 ```bash
 bundle install
 ```
-
-unfortunately, at the moment you also need NodeJS on your machine to build the frontend assets which will be then copied into the Docker image. Removing this dependency is on my TODO list
-
+and then:
 ```bash
 yarn install
 bundle exec rails assets:precompile
@@ -167,11 +165,12 @@ docker build --tag faenz .
 - [x] Release public Docker images
 - [x] Make Faenz hostable on [Render](https://render.com)
 - [x] Screenshots, presentation and demo of Faenz
-- [ ] Dark theme
+- [x] Remove the NodeJS dependency by using a multi-stage Docker build
+- [-] Dark theme
+- [ ] Generate two docker images: one for SQLite, one for MySQL
 - [ ] Support import and export of data, also compatible with Plausible exports
-- [ ] Allow to collect extra and complex fields
+- [ ] Allow collecting extra and complex fields
 - [ ] Configurable charts (hide or add some charts)
-- [ ] Remove the NodeJS dependency by using a multi-stage Docker build
 - [ ] Improve UI, design, fonts, colors
 - [ ] Test if Faenz works with Heroku Postgres free-tier and in general with Prostgres database
 

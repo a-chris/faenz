@@ -1,11 +1,19 @@
+# generics
 **/tmp
 **/log
 **/spec
 **/node_modules
-TAGS
-.env*
-/scripts
-db/*.sqlite3
 
+# development
+TAGS
+db/*.sqlite3
+/scripts
+.env*
+.pre-commit-config.yaml
+
+# assets
+public/assets
+
+# secrets
 config/credentials.yml.enc
 config/master.key

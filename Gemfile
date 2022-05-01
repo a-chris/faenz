@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '3.0.3'
+ruby '3.0.4'
 
 gem 'rails', '~> 7.0.2'
 
@@ -22,8 +22,6 @@ gem 'cssbundling-rails'
 gem 'jbuilder'
 
 gem 'tzinfo-data'
-
-gem 'sass-rails'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', require: false

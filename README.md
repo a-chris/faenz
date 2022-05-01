@@ -118,7 +118,22 @@ The required variables to use Faenz with SQLite are:
 e.g.
 
 ```bash
-docker run -p 3000:3000 -e DB=sqlite -e ADMIN_USERNAME=admin -e ADMIN_PASSWORD=test faenz
+docker run -p 3000:3000 -e DB=sqlite -e ADMIN_USERNAME=admin -e ADMIN_PASSWORD=test achris/faenz:latest
+```
+
+or you can create a `docker-compose.yml` file and run it with **doker-compose**
+
+```
+services:
+  web:
+    image: achris/faenz:latest
+    ports:
+      - "3000:3000"
+    environment:
+      - DB=sqlite
+      - ADMIN_USERNAME=admin
+      - ADMIN_PASSWORD=test
+      - RAILS_SERVE_STATIC_FILES=true
 ```
 
 ### MySQL
@@ -138,7 +153,7 @@ The required variables to use Faenz with MySQL/MariaDB are:
 e.g.
 
 ```bash
-docker run -p 3000:3000 -e DB=mysql -e DB_HOST=... -e DB_PORT=3306 -e DB_PSWD=test -e DB_USER=db_user -e ADMIN_USERNAME=admin -e ADMIN_PASSWORD=test faenz
+docker run -p 3000:3000 -e DB=mysql -e DB_HOST=... -e DB_PORT=3306 -e DB_PSWD=db_password -e DB_USER=db_user -e ADMIN_USERNAME=admin -e ADMIN_PASSWORD=test achris/faenz:latest
 ```
 
 # Build the container
@@ -148,9 +163,7 @@ Be sure to have all the Ruby dependencies installed with
 ```bash
 bundle install
 ```
-
-unfortunately, at the moment you also need NodeJS on your machine to build the frontend assets which will be then copied into the Docker image. Removing this dependency is on my TODO list
-
+and then:
 ```bash
 yarn install
 bundle exec rails assets:precompile
@@ -167,11 +180,12 @@ docker build --tag faenz .
 - [x] Release public Docker images
 - [x] Make Faenz hostable on [Render](https://render.com)
 - [x] Screenshots, presentation and demo of Faenz
-- [ ] Dark theme
+- [x] Remove the NodeJS dependency by using a multi-stage Docker build
+- [x] Dark theme
+- [ ] Generate two docker images: one for SQLite, one for MySQL and include a reverse proxy solution
 - [ ] Support import and export of data, also compatible with Plausible exports
-- [ ] Allow to collect extra and complex fields
+- [ ] Allow collecting extra and complex fields
 - [ ] Configurable charts (hide or add some charts)
-- [ ] Remove the NodeJS dependency by using a multi-stage Docker build
 - [ ] Improve UI, design, fonts, colors
 - [ ] Test if Faenz works with Heroku Postgres free-tier and in general with Prostgres database
 

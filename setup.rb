@@ -7,6 +7,7 @@ db_mode   = ENV['DB']
 rails_env = db_mode == 'sqlite' ? 'production_sqlite' : 'production_mysql'
 
 if File.exist?('_first_run')
+  puts "Running for the first time"
   first_run = true
   system("DISABLE_DATABASE_ENVIRONMENT_CHECK=1 RAILS_ENV=#{rails_env} bundle exec rails db:create db:migrate")
   File.delete('_first_run')

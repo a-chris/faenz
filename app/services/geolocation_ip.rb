@@ -1,5 +1,9 @@
 require 'net/http'
 
+#
+# Geolocate the IP address using the IP Geolocation APIs
+# https://ipgeolocation.io/documentation/ip-geolocation-api.html
+#
 class GeolocationIp
   class << self
     API_KEY = ENV['GEOIP_API_KEY']
@@ -8,7 +12,7 @@ class GeolocationIp
       return {} if ip == '::1'
       return {} if API_KEY.nil?
 
-      response = Net::HTTP.get(URI("https://api.freegeoip.app/json/#{ip}?apikey=#{API_KEY}"))
+      response = Net::HTTP.get(URI("https://api.ipgeolocation.io/ipgeo?apiKey=#{API_KEY}&ip=#{ip}"))
       response = JSON.parse(response, symbolize_names: true)
       {
         country: response[:country_name],

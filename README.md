@@ -99,6 +99,7 @@ As far as I know, you can host a SQLite database on render only with paid plans 
 - DB_PORT
 - DB_USER
 - DB_PSWD
+- GEOIP_API_KEY (if you want to geolocate IPs)
 
 4. Deploy on Render
 
@@ -114,6 +115,7 @@ The required variables to use Faenz with SQLite are:
 - DB=sqlite
 - ADMIN_USERNAME
 - ADMIN_PASSWORD
+- GEOIP_API_KEY (if you want to geolocate IPs)
 
 e.g.
 
@@ -133,7 +135,7 @@ services:
       - DB=sqlite
       - ADMIN_USERNAME=admin
       - ADMIN_PASSWORD=test
-      - RAILS_SERVE_STATIC_FILES=true
+      - GEOIP_API_KEY (if you want to geolocate IPs)
 ```
 
 ### MySQL
@@ -155,6 +157,9 @@ e.g.
 ```bash
 docker run -p 3000:3000 -e DB=mysql -e DB_HOST=... -e DB_PORT=3306 -e DB_PSWD=db_password -e DB_USER=db_user -e ADMIN_USERNAME=admin -e ADMIN_PASSWORD=test achris/faenz:latest
 ```
+
+# IP Geolocation
+Faenz supports IP Geolocation by using the API provided by https://ipgeolocation.io, you can use the free plan that gives 30k requests per month and 1k daily, you just need to signup and save the API key into the environment variable `GEOIP_API_KEY`.
 
 # Build the container
 

@@ -16,8 +16,8 @@ class GeolocationIp
       response = JSON.parse(response, symbolize_names: true)
       {
         country: response[:country_name],
-        country_code: response[:country_code],
-        region: response[:region_name],
+        country_code: response[:country_code2],
+        region: response[:state_prov],
         city: response[:city],
         lat: response[:latitude],
         lng: response[:longitude]

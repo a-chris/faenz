@@ -1,5 +1,12 @@
-$primary: #B076A8;
-$link: #B076A8;
+// colors
+$primary: rgb(173, 102, 173);
+$link: rgb(173, 102, 173);
+// box
+$box-background-color: rgb(173, 102, 173, 0.15);
+$box-padding: 2rem;
+$box-shadow: 0 0.5em 1em -0.125em rgb(10 10 10 / 5%);
+// container
+$container-max-width: 1040px;
 
 @import 'bulma/bulma';
 @media (prefers-color-scheme: dark) {

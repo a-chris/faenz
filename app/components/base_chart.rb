@@ -2,7 +2,7 @@ class BaseChart < ViewComponent::Base
   attr_reader :series
 
   @@default_text_color = '#2f2f2f'
-  @@primary_color = '#c24eb2'
+  @@primary_color = '#AD66AD'
   @@secondary_color = '#e6aa68'
   @@default_colors = [@@primary_color, @@secondary_color]
 

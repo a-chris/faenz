@@ -36,18 +36,17 @@ gem 'view_component', '~> 2.49'
 
 gem 'devise', '~> 4.8'
 
-group :production_sqlite do
+group :production, :production_sqlite do
   gem 'sqlite3', '~> 1.4'
 end
 
-# Temporary turned off
-group :production, :production_mysql do
+group :production_mysql do
   gem 'mysql2', '~> 0.5.3'
 end
 
 group :development, :test do
   gem 'benchmark', '~> 0.2.0'
-  gem 'debug', platforms: %i[mri mingw x64_mingw]
+  gem "debug", "~> 1.5"
   gem 'factory_bot_rails', '~> 6.2'
   gem 'faker', '~> 2.19'
   gem 'rspec-rails', '~> 5.0.0'

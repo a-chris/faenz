@@ -26,8 +26,6 @@ gem 'tzinfo-data'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', require: false
 
-gem 'dotenv', '~> 2.7'
-
 gem 'chartkick', '~> 4.1'
 
 gem 'groupdate', '~> 6.0'
@@ -46,7 +44,8 @@ end
 
 group :development, :test do
   gem 'benchmark', '~> 0.2.0'
-  gem "debug", "~> 1.5"
+  gem 'debug', '~> 1.5'
+  gem 'dotenv', '~> 2.7'
   gem 'factory_bot_rails', '~> 6.2'
   gem 'faker', '~> 2.19'
   gem 'rspec-rails', '~> 5.0.0'

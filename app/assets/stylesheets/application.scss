@@ -1,10 +1,21 @@
 // colors
+$white: hsl(0, 0%, 100%);
+$black-bis: hsl(0, 0%, 7%);
+$black-ter: hsl(0, 0%, 14%);
+$grey-darker: hsl(0, 0%, 21%);
+$grey-dark: hsl(0, 0%, 29%);
+$grey-light: hsl(0, 0%, 71%);
+$grey-lighter: hsl(0, 0%, 86%);
+$white-ter: hsl(0, 0%, 96%);
+$white-bis: hsl(0, 0%, 98%);
+
 $primary: rgb(173, 102, 173);
-$link: rgb(173, 102, 173);
+$link: rgb(124, 72, 124);
 // box
-$box-background-color: rgb(173, 102, 173, 0.15);
+$box-color: $grey-darker;
+$box-background-color: rgb(173, 102, 173, 0.1);
 $box-padding: 2rem;
-$box-shadow: 0 0.5em 1em -0.125em rgb(10 10 10 / 5%);
+$box-shadow: 0;
 // container
 $container-max-width: 1040px;
 

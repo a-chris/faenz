@@ -65,7 +65,7 @@ The project has been written with Heroku in mind to it should be easy and not re
 2. Add your fork repository to Heroku
 3. Setup the required variables on the Heroku project dashboard or by using the CLI:
 
-- BUNDLE_WITHOUT => development:test:production_sqlite
+- BUNDLE_WITHOUT => development:test:production:production_sqlite
 - DB => mysql
 - ADMIN_USERNAME
 - ADMIN_PASSWORD
@@ -91,7 +91,7 @@ As far as I know, you can host a SQLite database on render only with paid plans 
 
 3. Setup the required variables:
 
-- BUNDLE_WITHOUT => development:test:production_sqlite
+- BUNDLE_WITHOUT => development:test:production:production_sqlite
 - DB => mysql
 - ADMIN_USERNAME
 - ADMIN_PASSWORD

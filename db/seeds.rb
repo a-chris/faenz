@@ -14,7 +14,8 @@ if Visit.count.zero?
     'youtube.com',
     'bing.com',
     'facebook.com',
-    'instagram.com'
+    'instagram.com',
+    nil
   ]
   urls_pool = [
     '',

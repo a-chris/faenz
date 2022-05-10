@@ -1,5 +1,7 @@
 class EventsController < ActionController::API
   def create
+    puts "request.hostname #{request.hostname}"
+    puts "request.domain #{request.domain}"
     attrs = params.permit(:d, :u, :n, :r, :w).to_h.with_indifferent_access
     return render json: { text: 'Missing d, u or n' }, status: :bad_request if (%w[d u n] - attrs.keys).any?
 

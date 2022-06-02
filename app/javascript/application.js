@@ -1,15 +1,12 @@
-// Entry point for the build script in your package.json
-import "@fortawesome/fontawesome-free/js/all";
+// Configure your import map in config/importmap.rb. Read more: https://github.com/rails/importmap-rails
 import "@hotwired/turbo-rails";
-import Chart from "chart.js/auto";
-import ChartDataLabels from "chartjs-plugin-datalabels";
-import "chartkick/chart.js";
-import "./controllers";
+import "controllers";
 
-Chart.register(ChartDataLabels);
+// fontawesome
+import "@fortawesome/fontawesome-free";
 
-Chart.defaults.set("plugins.datalabels", {
-  color: "transparent",
-});
+// chartkick
+import "Chart.bundle";
+import "chartkick";
 
 Chart.defaults.font.size = 14;

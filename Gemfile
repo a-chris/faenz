@@ -11,13 +11,13 @@ gem 'rack-cors'
 
 gem 'puma', '~> 5.0'
 
-gem 'jsbundling-rails'
+gem 'importmap-rails'
+
+gem 'dartsass-rails', '~> 0.3.0'
 
 gem 'turbo-rails'
 
 gem 'stimulus-rails'
-
-gem 'cssbundling-rails'
 
 gem 'jbuilder'
 

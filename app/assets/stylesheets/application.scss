@@ -19,10 +19,10 @@ $box-shadow: 0;
 // container
 $container-max-width: 1040px;
 
-@import 'bulma/bulma';
-@media (prefers-color-scheme: dark) {
-  @import 'bulma-prefers-dark/bulma-prefers-dark.sass';
-}
+@import './bulma.sass';
+// @media (prefers-color-scheme: dark) {
+//   @import 'bulma-prefers-dark/bulma-prefers-dark.sass';
+// }
 
 @font-face {
   font-family: 'Barlow';

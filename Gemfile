@@ -19,8 +19,6 @@ gem 'turbo-rails'
 
 gem 'stimulus-rails'
 
-gem 'jbuilder'
-
 gem 'tzinfo-data'
 
 # Reduces boot times through caching; required in config/boot.rb

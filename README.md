@@ -80,7 +80,7 @@ The standard name for the database will be `faenz`, if you want to give a differ
 
 ## Render
 
-[Render](https://render.com) is an Heroku alternative that I found out only recently but is pretty convenient to deploy Ruby on Rails applications. The setup is very similar to the Heroku one.
+[Render](https://render.com) is an Heroku alternative that I found out only recently but is pretty convenient to deploy Ruby on Rails applications. The setup is very similar to Heroku.
 As far as I know, you can host a SQLite database on render only with paid plans because with the free plan you don't get access to the file system so you need to use the MySQL solution to persist your data.
 
 1. Fork this project

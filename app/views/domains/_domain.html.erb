@@ -1,90 +1,29 @@
 <%
-  periods       = ['1 day', '1 week','2 week','1 month','6 months','1 year']
-  params_period = params[:period] || '1week'
-  period_name   = params_period.gsub(/\d/, '\\0 ')
-  quantity      = params_period.gsub(/\D/,'').to_i
-  unit          = params_period.gsub(/\d/,'')
-  start_date    = quantity.send(unit).ago.midnight
-
-  charts = [
-    TopSources.new(domain: @domain, start_date: start_date),
-    TopPages.new(domain: @domain, start_date: start_date),
-    Devices.new(domain: @domain, start_date: start_date),
-    TopHours.new(domain: @domain, start_date: start_date),
-    TopLocations.new(domain: @domain, start_date: start_date)
-  ]
+  start_date = 1.day.ago.midnight
+  pageviews = domain.visits.where('time_at >= ?', start_date).count
+  unique_visitors = domain.visits.where('time_at >= ?', start_date).pluck(:ip).uniq.size
 %>
 
-<div id="<%= dom_id domain %>">
-  <div class="block is-flex is-flex-wrap-wrap is-flex-direction-row is-justify-content-space-between is-align-items-center">
-    <div class="is-flex is-flex-wrap-wrap is-flex-direction-row is-align-items-center">
-      <div class="is-flex is-align-items-center">
-        <figure class="image is-48x48 m-3">
-          <img class="is-rounded" src="<%= @domain.icon_url %>">
+<div class="column is-6">
+  <div class="box">
+    <div class="columns is-mobile">
+      <div class="column is-narrow">
+        <figure class="image is-48x48">
+          <img class="is-rounded" src="<%= domain.icon_url %>">
         </figure>
-
-        <h2 class="title is-3"><%= @domain.name %></h1>
       </div>
-
-      <div class="is-flex is-align-items-center">
-        <%# EDIT DOMAIN BUTTON %>
-        <%= link_to(edit_domain_path(@domain), class: "p-3") do %>
-          <span class="icon" style="margin-top:10px;">
-            <i class="fa-regular fa-lg fa-pen-to-square"></i>
-          </span>
-        <% end %>
-
-        <%# DELETE DOMAIN BUTTON %>
-        <%= link_to(domain_path(@domain), data: { "turbo-method": :delete, turbo_confirm: 'Are you certain you want to delete this domain?' }) do %>
-          <span class="icon" style="margin-top:10px;">
-            <i class="fa-solid fa-lg fa-trash"></i>
-          </span>
-        <% end %>
+      <div class="column">
+        <%= link_to domain.name, domain, class: "title is-4" %>
       </div>
     </div>
-    <div class="is-flex is-align-self-flex-end">
-      <div class="dropdown">
-        <div class="dropdown-trigger">
-          <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
-            <span><%= period_name %></span>
-            <span class="icon is-small">
-              <i class="fas fa-angle-down" aria-hidden="true"></i>
-            </span>
-          </button>
-        </div>
-        <div class="dropdown-menu" id="dropdown-menu" role="menu">
-          <div class="dropdown-content">
-            <% periods.each do |p| %>
-              <a href="?period=<%= p.gsub(' ','') %>" class="dropdown-item <%= 'is-active' if p.gsub(' ','') == params_period %>">
-                <%= p %>
-              </a>
-            <% end %>
-          </div>
-        </div>
+    <div class="is-flex">
+      <div class="pr-4">
+        <%= render(Visits.new(domain: domain, start_date: start_date, options: { show_line_only: true, width: "120px", height: "40px" })) %>
       </div>
-    </div>
-  </div>
-  <div>
-    <%= render(TopStats.new(domain: @domain, start_date: start_date)) %>
-    <div class="box">
-      <%= render(Visits.new(domain: @domain, start_date: start_date)) %>
-    </div>
-    <div class="columns is-multiline">
-      <% charts.each do |chart| %>
-        <div class="column is-half">
-          <div class="box">
-            <%= render(chart) %>
-          </div>
-        </div>
-      <% end %>
+      <div>
+        <p><%= pageviews %> page views</p>
+        <p><%= unique_visitors %> unique visitors</p>
+      </div>
     </div>
   </div>
 </div>
-
-<%= javascript_tag do %>
-  var dropdown = document.querySelector('.dropdown');
-  dropdown.addEventListener('click', function(event) {
-  event.stopPropagation();
-  dropdown.classList.toggle('is-active');
-  });
-<% end %>

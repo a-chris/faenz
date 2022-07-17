@@ -3,21 +3,20 @@
     <h2 class="title"><%= locals[:title] %></h1>
     <%= form_with(model: @domain) do |f| %>
       <div class="field">
-        <label class="label">Domain url</label>
+        <label class="label">Domain url*</label>
         <div class="control">
-          <%= f.text_field :base_url, class: "input", placeholder: "Domain url" %>
+          <%= f.text_field :base_url, class: "input", placeholder: "https://faenz.xyz" %>
         </div>
       </div>
       <div class="field">
         <label class="label">Icon</label>
         <div class="control">
-          <%= f.text_field :icon, class: "input", placeholder: "Icon url" %>
+          <%= f.text_field :icon, class: "input", placeholder: "https://faenz/favicon.ico" %>
         </div>
       </div>
-
       <%= render "users/shared/errors", locals: { errors: @domain.errors.full_messages } %>
-
       <div class="actions is-flex is-justify-content-end">
+        <span class="tag is-danger is-light mx-3 my-auto">* required fields</span>
         <%= f.submit 'Submit', class: "button is-link" %>
       </div>
     <% end %>

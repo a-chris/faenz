@@ -5,3 +5,7 @@ db/schema.rb linguist-generated
 
 # Mark any vendored files as having been vendored.
 vendor/* linguist-vendored
+
+# ignoring SASS/SCSS files so that they not appear as the main language of the repository
+*.sass -linguist-detectable
+*.scss -linguist-detectable

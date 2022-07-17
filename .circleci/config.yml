@@ -12,12 +12,14 @@ jobs:
       - image: cimg/ruby:3.0.4
     steps:
       - checkout
-      - install-deps
-      - rspec-test
+      - ruby/install-deps
+      - ruby/rspec-test:
+          include: spec/**/*_spec.rb
 
 workflows:
   build-docker-image-only-with-buildkit:
     jobs:
+      - rspec
       - docker/publish:
           docker-username: DOCKER_LOGIN
           docker-password: DOCKER_PASSWORD

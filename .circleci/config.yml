@@ -3,7 +3,17 @@
 version: 2.1
 
 orbs:
+  ruby: circleci/ruby@1.8.0
   docker: circleci/docker@2.1.2
+
+jobs:
+  rspec:
+    docker:
+      - image: cimg/ruby:3.0.4
+    steps:
+      - checkout
+      - install-deps
+      - rspec-test
 
 workflows:
   build-docker-image-only-with-buildkit:
@@ -14,3 +24,5 @@ workflows:
           image: achris15/faenz
           remote-docker-version: 20.10.14
           use-buildkit: true
+          requires:
+            - rspec

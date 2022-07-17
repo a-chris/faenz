@@ -24,6 +24,7 @@ workflows:
           docker-username: DOCKER_LOGIN
           docker-password: DOCKER_PASSWORD
           image: achris15/faenz
+          tag: latest
           remote-docker-version: 20.10.14
           use-buildkit: true
           requires:

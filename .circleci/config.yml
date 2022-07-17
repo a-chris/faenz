@@ -11,7 +11,7 @@ workflows:
       - docker/publish:
           docker-username: DOCKER_LOGIN
           docker-password: DOCKER_PASSWORD
-          image: $CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME
+          image: $DOCKER_LOGIN/$CIRCLE_PROJECT_REPONAME
           remote-docker-version: 20.10.14
           update-description: true
           use-buildkit: true

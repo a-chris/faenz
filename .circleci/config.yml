@@ -17,7 +17,7 @@ jobs:
           include: spec/**/*_spec.rb
 
 workflows:
-  build-docker-image-only-with-buildkit:
+  build-and-publish-to-docker:
     jobs:
       - rspec
       - docker/publish:

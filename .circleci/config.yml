@@ -6,11 +6,6 @@ orbs:
   docker: circleci/docker@2.1.2
 
 workflows:
-  build-docker-image-only:
-    jobs:
-      - docker/publish:
-          image: $CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME
-          update-description: true
   build-docker-image-only-with-buildkit:
     jobs:
       - docker/publish:

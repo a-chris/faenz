@@ -17,7 +17,7 @@ Faenz only collect these information:
 - width: the width, in pixel, of the device used to load the page (e.g. 1920)
 - user IP Address: the user IP is needed to calculate some metrics like the bounce rate, but is not used to track the user activity. **The IP address is mixed with a random salt and is encrypted. A new salt is generated every 24 hours, so there's no way to know if a user have been visiting your website two days in a row.** [That's also how Plausible works](https://plausible.io/data-policy).
 
-# How it works
+# How to deploy Faenz
 
 ## Traditional way
 
@@ -194,7 +194,7 @@ docker build --tag faenz .
 - [ ] Allow collecting extra and complex fields
 - [ ] Configurable charts (hide or add some charts)
 - [ ] Improve UI, design, fonts, colors
-- [ ] Test if Faenz works with Heroku Postgres free-tier and in general with Prostgres database
+- [ ] Test if Faenz works with Prostgres databases
 
 # Contributing
 

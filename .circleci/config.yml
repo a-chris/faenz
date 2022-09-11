@@ -31,3 +31,7 @@ workflows:
             TAG_VERSION: $(cat version.txt)
           requires:
             - rspec
+          before_build:
+            - run:
+                name: 'export TAG_VERSION'
+                command: echo "export TAG_VERSION=$(cat version.txt)" >> "$BASH_ENV"

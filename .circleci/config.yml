@@ -15,9 +15,6 @@ jobs:
       - ruby/install-deps
       - ruby/rspec-test:
           include: spec/**/*_spec.rb
-      - run:
-          name: 'Set tag version for docker build'
-          command: export TAG_VERSION=$(cat version.txt)
 
 workflows:
   build-and-publish-to-docker:
@@ -30,5 +27,7 @@ workflows:
           tag: ${TAG_VERSION}
           remote-docker-version: 20.10.14
           use-buildkit: true
+          environments:
+            TAG_VERSION: $(cat version.txt)
           requires:
             - rspec

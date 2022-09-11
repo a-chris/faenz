@@ -13,7 +13,7 @@ gem 'puma', '~> 5.0'
 
 gem 'importmap-rails'
 
-gem 'dartsass-rails', '~> 0.3.0'
+gem 'dartsass-rails', '~> 0'
 
 gem 'turbo-rails'
 

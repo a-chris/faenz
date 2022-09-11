@@ -107,6 +107,8 @@ The standard name for the database will be `faenz`, if you want to give a differ
 
 ## Run as a Docker container
 
+Docker images are hosted on a [public DockerHub repository](https://hub.docker.com/repository/docker/achris15/faenz).
+
 ### SQLite
 
 By running Faenz with the SQLite database all the data are stored into a sqlite database created inside the docker container. It would be a really good idea to create a volume to persist the database on your file system and not lose it if something goes wrong with the container.

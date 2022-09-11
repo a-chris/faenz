@@ -27,9 +27,9 @@ require_relative 'support/factory_bot.rb'
 # If you are not using ActiveRecord, you can remove these lines.
 begin
   ActiveRecord::Migration.maintain_test_schema!
-rescue ActiveRecord::PendingMigrationError => e
-  puts e.to_s.strip
-  exit 1
+rescue ActiveRecord::PendingMigrationError => _
+  puts 'Running migrations and resetting db'
+  system('bundle exec rails db:migrate:reset')
 end
 RSpec.configure do |config|
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures

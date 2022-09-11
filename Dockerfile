@@ -18,6 +18,7 @@ RUN apk add build-base && \
 COPY . .
 RUN touch _first_run
 RUN EDITOR="notexist" bin/rails credentials:edit
+RUN bundle exec rails dartsass:build
 RUN RAILS_ENV=production_sqlite bundle exec rails assets:precompile
 
 EXPOSE 3000

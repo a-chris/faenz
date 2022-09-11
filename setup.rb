@@ -7,7 +7,7 @@ rails_env = db_mode == 'sqlite' ? 'production_sqlite' : 'production_mysql'
 
 if File.exist?('_first_run')
   puts 'Running for the first time'
-  system("DISABLE_DATABASE_ENVIRONMENT_CHECK=1 RAILS_ENV=#{rails_env} bundle exec rails db:create db:migrate")
+  system("DISABLE_DATABASE_ENVIRONMENT_CHECK=1 RAILS_ENV=#{rails_env} bundle exec rails db:create")
   File.delete('_first_run')
 else
   'Container already initialized.'

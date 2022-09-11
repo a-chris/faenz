@@ -29,7 +29,7 @@ begin
   ActiveRecord::Migration.maintain_test_schema!
 rescue ActiveRecord::PendingMigrationError => _
   puts 'Running migrations and resetting db'
-  system('bundle exec rails db:migrate:reset')
+  system('bundle exec rails db:migrate')
 end
 RSpec.configure do |config|
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures

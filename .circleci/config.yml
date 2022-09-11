@@ -27,8 +27,6 @@ workflows:
           tag: ${TAG_VERSION}
           remote-docker-version: 20.10.14
           use-buildkit: true
-          environments:
-            TAG_VERSION: $(cat version.txt)
           requires:
             - rspec
           before_build:

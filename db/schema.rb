@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_02_26_171115) do
+ActiveRecord::Schema[7.0].define(version: 2022_09_11_092018) do
   create_table "domains", force: :cascade do |t|
     t.integer "user_id"
     t.string "base_url"
@@ -41,7 +41,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_02_26_171115) do
     t.datetime "time_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index "\"domain_id,\", \"time_at\"", name: "index_visits_on_domain_id,_and_time_at"
     t.index ["domain_id"], name: "index_visits_on_domain_id"
+    t.index ["time_at"], name: "index_visits_on_time_at"
   end
 
   add_foreign_key "domains", "users"

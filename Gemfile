@@ -13,7 +13,7 @@ gem 'puma', '~> 5.0'
 
 gem 'importmap-rails'
 
-gem 'dartsass-rails', '~> 0.3.0'
+gem 'dartsass-rails', '~> 0'
 
 gem 'turbo-rails'
 
@@ -46,6 +46,7 @@ group :development, :test do
   gem 'dotenv', '~> 2.7'
   gem 'factory_bot_rails', '~> 6.2'
   gem 'faker', '~> 2.19'
+  gem 'rspec_junit_formatter', '~> 0.5.1'
   gem 'rspec-rails', '~> 5.0.0'
 end
 

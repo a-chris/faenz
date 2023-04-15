@@ -7,10 +7,19 @@ class Domain < ApplicationRecord
   before_save :clean_base_url
   before_save :set_default_icon
 
+  # class methods
+
+  def self.sanitize(url)
+    url = "https://#{url}" unless url.start_with?('https')
+    URI(url).host.gsub('www.', '')
+  rescue => e
+    nil
+  end
+
   # callbacks
 
   def clean_base_url
-    self.base_url = self.base_url&.gsub(%r{/$}, '')
+    self.base_url = self.class.sanitize(base_url)
   end
 
   def set_default_icon
@@ -27,12 +36,8 @@ class Domain < ApplicationRecord
     icon || "#{base_url}/favicon.ico"
   end
 
-  def with_protocol
-    "https://#{base_url}"
-  end
-
   def validate_base_url
-    return errors.add(:base_url, 'is empty') unless base_url.present?
+    return errors.add(:base_url, 'is empty') if base_url.blank?
     # return errors.add(:base_url, 'should not start with http:// or https://') if base_url.match?(%r{^http(s?)://})
   end
 end

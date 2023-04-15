@@ -10,8 +10,8 @@ class EventsController < ActionController::API
       referrer: attrs[:r],
       width: attrs[:w]
     }
-
-    domain = Domain.find_by(base_url: attrs[:domain])
+    sanitized_domain = Domain.sanitize(attrs[:domain])
+    domain = Domain.find_by(base_url: sanitized_domain)
     return render json: { text: 'Domain not found' }, status: :bad_request if domain.nil?
 
     geo = GeolocationIp.call(ip: request.ip)

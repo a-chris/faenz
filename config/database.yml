@@ -20,7 +20,7 @@ test:
   <<: *default
   database: db/test.sqlite3
 
-production_sqlite:
+production_sqlite: &production_sqlite
   adapter: sqlite3
   timeout: 5000
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
@@ -39,4 +39,4 @@ production_mysql: &production_mysql
   socket: /tmp/mysql.sock
 
 production:
-  <<: *production_mysql
+  <<: *production_sqlite

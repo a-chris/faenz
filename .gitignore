@@ -47,3 +47,5 @@ TAGS
 /config/*.enc
 /config/credentials/*.enc
 /config/credentials/*.key
+
+sqlite_db/*.sqlite3

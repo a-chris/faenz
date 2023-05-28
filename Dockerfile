@@ -1,18 +1,19 @@
 FROM ruby:3.0.4-slim-bullseye
 WORKDIR /faenz-analytics
 RUN apt-get update
-RUN apt-get install -y \
-  libsqlite3-dev \
-  libmariadb-dev
+RUN apt-get install -y libsqlite3-dev
 
 RUN gem install bundler
 
 COPY Gemfile .
 COPY Gemfile.lock .
-RUN bundle config set --local with 'production production_sqlite production_mysql'
-RUN apt-get install -y build-essential && \
-  bundle install && \
+RUN bundle config set --local with 'production'
+
+# build-essential needed to compile gems, ffi in particular
+RUN apt-get install -y --no-install-recommends build-essential && \
+  bundle install --deployment && \
   apt-get remove -y build-essential && \
+  apt-get autoremove -y && \
   rm -rf /var/cache && \
   rm -rf tmp/cache
 

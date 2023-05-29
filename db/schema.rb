@@ -42,6 +42,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_11_092018) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index "\"domain_id,\", \"time_at\"", name: "index_visits_on_domain_id,_and_time_at"
+    t.index ["domain_id", "time_at"], name: "index_visits_on_domain_id_and_time_at"
     t.index ["domain_id"], name: "index_visits_on_domain_id"
     t.index ["time_at"], name: "index_visits_on_time_at"
   end

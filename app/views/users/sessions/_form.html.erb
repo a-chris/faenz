@@ -16,7 +16,6 @@
 
     <%= render "users/shared/errors", locals: { errors: [flash[:alert]] } %>
 
-    <%= render "users/sessions/demo_message" if ENV['DEMO_MODE'] == "true" %>
 
     <div class="actions is-flex is-justify-content-end">
       <%= f.submit "Log in", class: "button is-primary" %>

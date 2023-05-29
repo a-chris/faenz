@@ -3,11 +3,7 @@ class ApplicationController < ActionController::Base
   before_action :init_user, only: :new
 
   def index
-    if current_user.nil? && ENV['DEMO_MODE'] == 'true'
-      redirect_to demo_path
-    else
-      redirect_to domains_path
-    end
+    redirect_to domains_path
   end
 
   def init_user

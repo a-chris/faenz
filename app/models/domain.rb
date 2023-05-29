@@ -9,17 +9,18 @@ class Domain < ApplicationRecord
 
   # class methods
 
-  def self.sanitize(url)
-    url = "https://#{url}" unless url.start_with?('https')
+  def self.hotname(url)
+    url = "https://#{url}" unless url.starts_with?('http')
     URI(url).host.gsub('www.', '')
   rescue => e
-    nil
+    puts e.message
+    ''
   end
 
   # callbacks
 
   def clean_base_url
-    self.base_url = self.class.sanitize(base_url)
+    self.base_url = self.class.hotname(base_url)
   end
 
   def set_default_icon

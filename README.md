@@ -122,7 +122,7 @@ The required variables to use Faenz with SQLite are:
 e.g.
 
 ```bash
-docker run -p 3000:3000 -e DB=sqlite -e ADMIN_USERNAME=admin -e ADMIN_PASSWORD=test achris/faenz:latest
+docker run -p 3000:3000 -e DB=sqlite -e ADMIN_USERNAME=admin -e ADMIN_PASSWORD=test achris15/faenz:<version>
 ```
 
 or you can create a `docker-compose.yml` file and run it with **doker-compose**
@@ -130,7 +130,7 @@ or you can create a `docker-compose.yml` file and run it with **doker-compose**
 ```
 services:
   web:
-    image: achris/faenz:latest
+    image: achris15/faenz:<version>
     ports:
       - "3000:3000"
     environment:

@@ -1,26 +1,21 @@
 <div class="container is-fluid has-background-primary">
-  <nav class="navbar has-background-primary" role="navigation" aria-label="main navigation">
+  <nav class="navbar has-background-primary" role="navigation" aria-label="main navigation" style="display: flex;justify-content: space-between;">
     <div class="navbar-brand">
       <a class="navbar-item" href="https://github.com/a-chris/faenz">
         <h1 class="main-title title is-4 has-text-black">
           {Faenz}
         </h1>
       </a>
-      <a role="button" class="navbar-burger has-text-black" aria-label="menu" aria-expanded="false" data-target="navbar_menu">
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-      </a>
     </div>
-    <div id="navbar_menu" class="navbar-menu">
+    <div>
       <div class="navbar-end">
         <div class="navbar-item">
           <div class="buttons">
             <a class="navbar-item" style="background-color:inherit !important;">
               <% if user_signed_in? %>
-                <%= button_to "Logout", destroy_user_session_path, method: :delete, class: 'button is-light has-text-black m-0'  %>
+                <%= button_to "Sign out", destroy_user_session_path, method: :delete, class: 'button is-light has-text-black m-0'  %>
               <% else %>
-                <%= button_to "Login", new_user_session_path, class: 'button is-light has-text-black m-0'  %>
+                <%= button_to "Sign in", new_user_session_path, class: 'button is-light has-text-black m-0'  %>
               <% end %>
             </a>
           </div>
@@ -29,36 +24,3 @@
     </div>
   </nav>
 </div>
-
-<%= javascript_tag do %>
-  document.addEventListener('DOMContentLoaded', () => {
-
-    // Get all "navbar-burger" elements
-    const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
-
-    // Check if there are any navbar burgers
-    if ($navbarBurgers.length > 0) {
-
-      // Add a click event on each of them
-      $navbarBurgers.forEach( el => {
-        el.addEventListener('click', () => {
-
-          // Get the target from the "data-target" attribute
-          const target = el.dataset.target;
-          const $target = document.getElementById(target);
-
-          // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
-          el.classList.toggle('is-active');
-          $target.classList.toggle('is-active');
-
-          if ($target.classList.contains('is-active')) {
-            $target.style.position = "absolute";
-            $target.style.right = 0;
-          } else {
-            $target.style.position = "";
-          }
-        });
-      });
-    }
-  }, { once: true });
-<% end %>

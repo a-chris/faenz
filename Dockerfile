@@ -1,4 +1,4 @@
-FROM ruby:3.0.4-slim-bullseye
+FROM ruby:3.2.2-slim-bookworm
 WORKDIR /faenz-analytics
 RUN apt-get update
 RUN apt-get install -y libsqlite3-dev

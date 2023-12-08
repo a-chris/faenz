@@ -8,12 +8,12 @@ FactoryBot.define do
     association :user
 
     factory :domain_example do
-      base_url { 'example.com' }
+      base_url { 'https://example.com' }
       icon { 'https://example.com/favicon.ico' }
     end
 
     factory :domain_github do
-      base_url { 'github.com' }
+      base_url { 'https://github.com' }
       icon { 'https://github.com/favicon.ico' }
     end
   end

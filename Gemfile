@@ -39,16 +39,18 @@ group :production_mysql do
 end
 
 group :development, :test do
-  gem 'benchmark', '~> 0.2.0'
+  gem 'benchmark', '~> 0.2'
   gem 'debug', '~> 1.5'
   gem 'dotenv', '~> 2.7'
   gem 'factory_bot_rails', '~> 6.2'
   gem 'faker', '~> 2.19'
-  gem 'rspec_junit_formatter', '~> 0.5.1'
-  gem 'rspec-rails', '~> 5.0.0'
+  gem 'rspec_junit_formatter', '~> 0.5'
+  gem 'rspec-rails'
 end
 
 group :development do
   gem 'rails_live_reload'
   gem 'web-console'
 end
+
+gem "irb", "~> 1.10"

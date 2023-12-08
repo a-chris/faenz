@@ -3,13 +3,13 @@
 version: 2.1
 
 orbs:
-  ruby: circleci/ruby@1.8.0
-  docker: circleci/docker@2.1.2
+  ruby: circleci/ruby@2.1.0
+  docker: circleci/docker@2.1.5
 
 jobs:
   rspec:
     docker:
-      - image: cimg/ruby:3.0.4
+      - image: cimg/ruby:3.2.2
     steps:
       - checkout
       - ruby/install-deps

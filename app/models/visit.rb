@@ -1,13 +1,14 @@
 class Visit < ApplicationRecord
   belongs_to :domain
 
-  serialize :geo, JSON
+  serialize :geo, coder: JSON
+
   before_save :clean_referrer
 
   # callbacks
 
   def clean_referrer
-    self.referrer = self.referrer&.gsub(%r{/$}, '')
+    self.referrer = referrer&.gsub(%r{/$}, "")
   end
 
   # methods

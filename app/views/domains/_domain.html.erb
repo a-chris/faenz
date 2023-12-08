@@ -1,5 +1,5 @@
 <%
-  start_date = 1.day.ago.midnight
+  start_date = 3.day.ago.midnight
   pageviews = domain.visits.where('time_at >= ?', start_date).count
   unique_visitors = domain.visits.where('time_at >= ?', start_date).pluck(:ip).uniq.size
 %>
@@ -9,7 +9,7 @@
     <div class="columns is-mobile">
       <div class="column is-narrow">
         <figure class="image is-48x48">
-          <img class="is-rounded" src="<%= domain.icon_url %>">
+          <img class="is-rounded" src="<%= domain.icon %>">
         </figure>
       </div>
       <div class="column">

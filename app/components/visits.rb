@@ -21,4 +21,8 @@ class Visits < BaseChart
       )
     end
   end
+
+  erb_template <<-ERB
+    <%= line_chart @series, id: SecureRandom.hex(7), curve: false, colors: @@default_colors, **@options %>
+  ERB
 end

@@ -12,4 +12,9 @@ class TopLocations < BaseChart
                          .to_h
                          .first(10)
   end
+
+  erb_template <<-ERB
+    <h2 class="title">Top locations</h2>
+    <%= bar_chart @series, id: SecureRandom.hex(7), colors: @@default_colors, **@@options %>
+  ERB
 end

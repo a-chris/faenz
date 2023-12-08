@@ -32,4 +32,9 @@ class Devices < BaseChart
       }
     )
   end
+
+  erb_template <<-ERB
+    <h2 class="title">Devices</h2>
+    <%= pie_chart @series, id: SecureRandom.hex(7), suffix: "%", colors: [*@@default_colors, '#91c7b1', '#7796cb'], **@options %>
+  ERB
 end

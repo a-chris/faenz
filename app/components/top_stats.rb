@@ -13,4 +13,27 @@ class TopStats < BaseChart
   def single_page_session
     @domain.visits.pluck(:ip).tally
   end
+
+  erb_template <<-ERB
+    <nav class="level box">
+      <div class="level-item has-text-centered">
+        <div>
+          <p class="heading">Unique visitors</p>
+          <p class="title"><%= @unique_visitors %></p>
+        </div>
+      </div>
+      <div class="level-item has-text-centered">
+        <div>
+          <p class="heading">Total pageviews</p>
+          <p class="title"><%= @pageviews %></p>
+        </div>
+      </div>
+      <div class="level-item has-text-centered">
+        <div>
+          <p class="heading">Bounce rate</p>
+          <p class="title"><%= @bounce_rate %> %</p>
+        </div>
+      </div>
+    </nav>
+  ERB
 end

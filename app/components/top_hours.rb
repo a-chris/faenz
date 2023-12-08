@@ -12,4 +12,9 @@ class TopHours < BaseChart
       .tally
     )
   end
+
+  erb_template <<-ERB
+    <h2 class="title">Top hours</h2>
+    <%= column_chart @series, id: SecureRandom.hex(7), colors: @@default_colors, **@@options %>
+  ERB
 end

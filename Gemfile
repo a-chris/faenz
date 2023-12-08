@@ -26,7 +26,7 @@ gem 'chartkick', '~> 4.1'
 
 gem 'groupdate', '~> 6.0'
 
-gem 'view_component', '~> 2.49'
+gem 'view_component', '~> 3.0'
 
 gem 'devise', '~> 4.8'
 

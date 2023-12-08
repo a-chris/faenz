@@ -17,8 +17,6 @@ gem 'dartsass-rails', '~> 0'
 
 gem 'turbo-rails'
 
-gem 'stimulus-rails'
-
 gem 'tzinfo-data'
 
 # Reduces boot times through caching; required in config/boot.rb

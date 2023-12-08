@@ -35,7 +35,7 @@ Devise.setup do |config|
   # Configure the parent class to the devise controllers.
 
   # https://medium.com/@nejdetkadir/how-to-use-devise-gem-with-ruby-on-rails-7-33b89f9a9c13
-  config.parent_controller = 'User::DeviseController'
+  # config.parent_controller = 'User::DeviseController'
 
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,

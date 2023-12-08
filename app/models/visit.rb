@@ -13,16 +13,14 @@ class Visit < ApplicationRecord
   # methods
 
   def from_device
-    return 'unknown' if width.blank?
+    return "unknown" if width.blank?
 
     if width < 600
-      'smartphone'
+      "smartphone"
     elsif width < 768
-      'tablet'
-    elsif width < 992
-      'laptop'
+      "tablet"
     else
-      'desktop'
+      "desktop"
     end
   end
 end

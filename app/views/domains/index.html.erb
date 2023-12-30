@@ -2,7 +2,7 @@
   <h2 class="title">Domains</h1>
   <div class="block">
     <%= link_to new_domain_path do %>
-      <span class="icon-text">
+      <span class="icon-text" style="font-weight:500;">
         <span>New domain</span>
         <span class="icon">
           <i class="fa-solid fa-circle-plus"></i>
@@ -12,7 +12,7 @@
   </div>
   <div class="columns is-multiline">
     <% @domains.each do |domain| %>
-      <%= render 'domains/domain', domain: domain %>
+      <%= render 'domain', domain: domain %>
     <% end %>
   </div>
 </div>

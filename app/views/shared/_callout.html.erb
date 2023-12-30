@@ -1,0 +1,10 @@
+<%
+  html_class ||= ""
+  emoji ||= nil
+  extra ||= {}
+%>
+
+<%= content_tag(:aside, class: "callout #{html_class}", **extra) do %>
+  <%= content_tag(:span, emoji, class: "emoji") if emoji.present? %>
+  <%= yield %>
+<% end %>

@@ -1,8 +1,8 @@
-**Faenz** a web analytics for smalls businesses and side projects.
+**Faenz is the web analytics for smalls businesses and side projects.**
 
 Faenz is a simple, open source, lightweight and privacy friendly web analytics, like a friendlier cousin to [Plausible](https://plausible.io/). GDPR Compliant. Cookie-free. Hostable on Render or your personal server with Docker images with no extra dependencies.
 
-Crafted with care using Ruby on Rails
+**A public demo of Faenz is available at https://faenz.acmecorp.dev, you can add your blog, e-commerce, whatever and track the visits. I'm running it as a funny experiment: everyone can add a domain and see how many visits the domains are collecting, everything is visible to anyone.**
 
 ![dashboard](readme/dashboard.jpeg)
 

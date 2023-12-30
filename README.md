@@ -1,6 +1,6 @@
 **Faenz** a web analytics for smalls businesses and side projects.
 
-Faenz is a simple, open source, lightweight and privacy friendly web analytics, like a friendlier cousin to [Plausible](https://plausible.io/). GDPR Compliant. Cookie-free. Hostable on Render or your personal server with Docker images.
+Faenz is a simple, open source, lightweight and privacy friendly web analytics, like a friendlier cousin to [Plausible](https://plausible.io/). GDPR Compliant. Cookie-free. Hostable on Render or your personal server with Docker images with no extra dependencies.
 
 Crafted with care using Ruby on Rails
 
@@ -8,7 +8,7 @@ Crafted with care using Ruby on Rails
 
 # Why
 
-In my quest for a GDPR-compliant analytics tool for my personal website and side projects, I dipped my toes into the Plausible free-period waters—and boy, was it was really good!
+In my quest for a GDPR-compliant analytics tool for my personal website and side projects, I had the opportunity to try the Plausible free-period and it was really good!
 
 At the end of the free-period I wanted to selfhost Plausible but it was too heavy for my trusty VPS with a humble 1 CPU and 1GB of RAM, that I also use for all my databases and personal projects. So I built my own solution using Ruby on Rails to be run on a low capable VPS and even on Render and similar services!
 
@@ -23,15 +23,15 @@ Faenz only collect essential information:
 - **width**: the width, in pixel, of the device used to load the page (e.g. 1920)
 - **user IP Address**: the user IP is needed to calculate some metrics like the bounce rate, but is not used to track the user activity. **The IP address is mixed with a random salt and encrypted. A new salt is generated every 24 hours, so there's no way to know if a user have been visiting your website two days in a row.** We have re-implemented the Plausible algorithm for this, [take a look.](https://plausible.io/data-policy)
 
-#   How Faenz works
+# How Faenz works
 
 ## Collecting website visits
 
-First of all you need to host the Faenz instance, login in the dashboard and add a new domain to your domains list by typing its url and favicon url.
+First of all, you need to host the Faenz instance, sign in to the dashboard and add a new domain by typing its domain and favicon urls.
 
-![](readme/new_domain.png)
+![New domain screenshot](readme/new_domain.png)
 
-Then you need to load the Faenz [Javascript file](https://github.com/a-chris/faenz/blob/main/public/faenz.js) into your website pages, the code will send a HTTP request when the page is loaded on the user's browser so that Faenz can collect the information regarding the user visit on your website.
+Then you have to load the Faenz frontend file [Javascript file](https://github.com/a-chris/faenz/blob/main/public/faenz.js) into your website pages, the code will send a HTTP request when the page is loaded on the user's browser so that Faenz can collect the information regarding the visit on your website.
 
 Assuming that you are hosting Faenz on you webserver available at `https://myfaenz.com` and you want to collect analytics data for `https://mywebsite.com` then you need to add this code to your website pages:
 
@@ -113,10 +113,17 @@ services:
       - ADMIN_USERNAME=admin
       - ADMIN_PASSWORD=test
       - GEOIP_API_KEY (if you want to geolocate IPs)
+    volumes:
+      - "./data:/faenz-analytics/sqlite_db"
 ```
 
+adding a `volume` is recommended to not lose your data after destroying the container or depolying a new version.
+
 # IP Geolocation
+
 Faenz supports IP Geolocation by using the https://ipgeolocation.io API, you can use the free plan that gives 30k requests per month and 1k daily, you just need to signup and save the API key into the environment variable `GEOIP_API_KEY`.
+
+If you have a better solution in mind feel free to open an issue 🙏
 
 # Build the container
 

@@ -5,7 +5,14 @@
       <div class="field">
         <label class="label">Domain url (required)</label>
         <div class="control">
-          <%= f.text_field :base_url, class: "input", placeholder: "https://acmecorp.dev" %>
+          <%= f.text_field(
+                :base_url,
+                class: "input",
+                placeholder: "https://acmecorp.dev",
+                onchange: "updateLineToAdd()",
+                onkeydown: "updateLineToAdd()",
+                onpaste: "updateLineToAdd()",
+                oninput: "updateLineToAdd()") %>
         </div>
       </div>
       <div class="field">
@@ -14,10 +21,34 @@
           <%= f.text_field :icon, class: "input", placeholder: "https://acmecorp.dev/favicon.ico" %>
         </div>
       </div>
+
       <%= render "users/shared/errors", locals: { errors: @domain.errors.full_messages } %>
-      <div class="actions is-flex is-justify-content-end">
+
+      <p>
+        Add this line to your website:
+      </p>
+
+      <%= content_tag(
+            :code,
+            "<script defer data-domain=\"#{@domain.base_url}\" src=\"https://faenz.acmecorp.dev/faenz.js\" />",
+            id:"line_to_add",
+            class: "my-1") %>
+
+      <%= render "shared/callout", emoji: "‼️", html_class: "mt-2" do %>
+        You won't be able to delete or edit the domain after it has been added. Please reach out to me on <a href="https://twitter.com/achris_15">Twitter</a> for any type of support.
+      <% end %>
+
+      <div class="actions is-flex is-justify-content-end mt-2">
         <%= f.submit 'Submit', class: "button is-link" %>
       </div>
     <% end %>
   </div>
 </div>
+
+<script>
+  function updateLineToAdd(el) {
+    let domainInput = document.querySelector("#domain_base_url");
+    let lineToAdd = document.querySelector("#line_to_add");
+    lineToAdd.textContent = `<script defer data-domain="${domainInput.value}" src="https://faenz.acmecorp.dev/faenz.js" />`
+  }
+</script>

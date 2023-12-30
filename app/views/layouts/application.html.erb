@@ -8,11 +8,15 @@
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;700&display=swap" rel="stylesheet">
   </head>
 
   <body>
     <%= render 'layouts/navbar' %>
-    <div class="mt-4">
+    <div class="mt-3">
       <%= yield %>
     </div>
   </body>

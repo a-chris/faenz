@@ -14,8 +14,8 @@ $radius-small: 4px;
 $radius: 8px;
 $radius-large: 16px;
 
-$primary: rgb(173, 102, 173);
-$link: rgb(124, 72, 124);
+$primary: #7C54B6;
+$link: #7c54b6;
 // box
 $box-color: $grey-darker;
 $box-background-color: rgb(173, 102, 173, 0.1);
@@ -25,18 +25,10 @@ $box-shadow: 0;
 $container-max-width: 1040px;
 
 @import './bulma.sass';
-// @media (prefers-color-scheme: dark) {
-//   @import 'bulma-prefers-dark/bulma-prefers-dark.sass';
-// }
 
-@font-face {
-  font-family: 'Barlow';
-  src: url('Barlow.woff2') format('woff2'),
-       url('Barlow.woff') format('woff');
-  font-weight: regular;
-  font-style: normal;
-}
+@import 'components/callout';
+@import 'utils';
 
 * {
-  font-family: 'Barlow';
+  font-family: 'Poppins';
 }

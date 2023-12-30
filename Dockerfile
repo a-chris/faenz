@@ -1,4 +1,4 @@
-FROM ruby:3.2.2-slim-bullseye
+FROM quay.io/evl.ms/fullstaq-ruby:3.2.2-jemalloc-bullseye-slim
 WORKDIR /faenz-analytics
 RUN apt-get update
 RUN apt-get install -y libsqlite3-dev

@@ -2,23 +2,18 @@
   <nav class="navbar has-background-primary" role="navigation" aria-label="main navigation" style="display: flex;justify-content: space-between;">
     <div class="navbar-brand">
       <a class="navbar-item" href="https://github.com/a-chris/faenz">
-        <h1 class="main-title title is-4 has-text-black">
+        <h1 class="main-title title is-4 has-text-white">
           {Faenz}
         </h1>
       </a>
     </div>
     <div>
-      <div class="navbar-end">
+      <div class="navbar-end desktop-only">
         <div class="navbar-item">
-          <div class="buttons">
-            <a class="navbar-item" style="background-color:inherit !important;">
-              <% if user_signed_in? %>
-                <%= button_to "Sign out", destroy_user_session_path, method: :delete, class: 'button is-light has-text-black m-0'  %>
-              <% else %>
-                <%= button_to "Sign in", new_user_session_path, class: 'button is-light has-text-black m-0'  %>
-              <% end %>
-            </a>
-          </div>
+          <a href="https://acmecorp.dev" class="navbar-item" style="color:white;font-weight:500;background-color: inherit !important;">
+            Made with ♥️ by ACMECorp.dev
+            <img src="https://acmecorp.dev/favicon.ico"/>
+          </a>
         </div>
       </div>
     </div>

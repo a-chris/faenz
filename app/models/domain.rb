@@ -31,6 +31,7 @@ class Domain < ApplicationRecord
 
   def validate_base_url
     return errors.add(:base_url, "is empty") if base_url.blank?
+
     errors.add(:base_url, "should start with http:// or https://") unless base_url.match?(%r{^http(s?)://})
   end
 

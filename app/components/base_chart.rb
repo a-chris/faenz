@@ -9,8 +9,8 @@ class BaseChart < ViewComponent::Base
   @@options = {
     library: {
       scales: {
-        x: { ticks: { color: @@primary_color, font: { family: 'Barlow' } } },
-        y: { ticks: { color: @@primary_color, font: { family: 'Barlow' } } }
+        x: { ticks: { color: @@primary_color, font: { family: 'Poppins' } } },
+        y: { ticks: { color: @@primary_color, font: { family: 'Poppins' } } }
       }
     }
   }

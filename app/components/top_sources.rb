@@ -7,7 +7,7 @@ class TopSources < BaseChart
     @start_date = start_date
     @series     = @domain.visits
                          .where("time_at >= ?", start_date)
-                         .where.not("url like ?", "%#{domain.base_url}%")
+                         .where.not("referrer like ?", "%#{domain.base_url}%") # exclude referrer == current domain
                          .pluck(:referrer)
                          .map { |r| r.gsub(%r{/$}, "") if r.present? }
                          .tally

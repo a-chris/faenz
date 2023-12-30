@@ -1,27 +1,35 @@
-**Faenz** is a simple, open source, lightweight and privacy friendly web analytics, alternative to Google Analytics, similar [Plausible](https://plausible.io/) but simpler and smaller. GDPR Compliant. Cookie-free. Hostable on Heroku or your personal server with Docker images. Written with Ruby on Rails.
+**Faenz** a web analytics for smalls businesses and side projects.
+
+Faenz is a simple, open source, lightweight and privacy friendly web analytics, like a friendlier cousin to [Plausible](https://plausible.io/). GDPR Compliant. Cookie-free. Hostable on Render or your personal server with Docker images.
+
+Crafted with care using Ruby on Rails
 
 ![dashboard](readme/dashboard.jpeg)
 
 # Why
 
-I needed a GDPR compliant analytics for my personal website and my side projects so I gave the Plausible free-period a try and it was really good. At the end of the free-period I wanted to selfhost Plausible but it was too heavy for my VPS with 1 CPU and 1GB of ram, that I also use for all my databases and personal projects. So I built my own solution using Ruby on Rails to be run on a low capable VPS and even on Heroku and similar services!
+In my quest for a GDPR-compliant analytics tool for my personal website and side projects, I dipped my toes into the Plausible free-period waters—and boy, was it was really good!
 
-To be honest, I didn't even read the Plausible source code. I just thought I could re-implement most of Plausible features by knowing how it works from the user perspective.
+At the end of the free-period I wanted to selfhost Plausible but it was too heavy for my trusty VPS with a humble 1 CPU and 1GB of RAM, that I also use for all my databases and personal projects. So I built my own solution using Ruby on Rails to be run on a low capable VPS and even on Render and similar services!
+
+Honestly, I didn't even read the Plausible source code. I just thought I could re-implement most of Plausible features by knowing how it works from the user perspective.
 
 # Data Policy
 
-Faenz only collect these information:
+Faenz only collect essential information:
 
-- referrer: the page from which the user is coming from (e.g. google, facebook, twitter, etc..)
-- url: the url of the page loaded (e.g. https://yoursite.com/home)
-- width: the width, in pixel, of the device used to load the page (e.g. 1920)
-- user IP Address: the user IP is needed to calculate some metrics like the bounce rate, but is not used to track the user activity. **The IP address is mixed with a random salt and is encrypted. A new salt is generated every 24 hours, so there's no way to know if a user have been visiting your website two days in a row.** [That's also how Plausible works](https://plausible.io/data-policy).
+- **referrer**: the page from which the user is coming from (e.g. google, facebook, twitter, etc..)
+- **url**: the url of the page loaded (e.g. https://yoursite.com/home)
+- **width**: the width, in pixel, of the device used to load the page (e.g. 1920)
+- **user IP Address**: the user IP is needed to calculate some metrics like the bounce rate, but is not used to track the user activity. **The IP address is mixed with a random salt and encrypted. A new salt is generated every 24 hours, so there's no way to know if a user have been visiting your website two days in a row.** We have re-implemented the Plausible algorithm for this, [take a look.](https://plausible.io/data-policy)
 
-# How to deploy Faenz
+#   How Faenz works
 
-## Traditional way
+## Collecting website visits
 
 First of all you need to host the Faenz instance, login in the dashboard and add a new domain to your domains list by typing its url and favicon url.
+
+![](readme/new_domain.png)
 
 Then you need to load the Faenz [Javascript file](https://github.com/a-chris/faenz/blob/main/public/faenz.js) into your website pages, the code will send a HTTP request when the page is loaded on the user's browser so that Faenz can collect the information regarding the user visit on your website.
 
@@ -35,21 +43,7 @@ that's all. Go to your Faenz dashboard and enjoy the realtime statistics.
 
 ## Server side
 
-A new intriguing solution: server-side analytics. You can send HTTP request from your server directly to Faenz to collect data regarding user visits, like before, but being sure that every visit is collected and not blocked by an ad-blocker or because the user has turned off Javascript.
-
-Moreover, you can use Faenz to collect data about how your code is working, for example I have some period tasks which run on my VPS and I'm using Faenz to log when the tasks run and what's the output. Of course, doing this, the width, referrer, etc.. is going to stay empty and unused.
-
-For this you just need to send HTTP `POST` requests to `https://myfaenz.com/api/event` with the following body:
-
-```javascript
-{
-  "d": "mywebsite.com",
-  "n": "pageview",
-  "r": "google.com",
-  "u": "https://mywebsite.com",
-  "w": 967
-}
-```
+You could potentially use Faenz for server-side analytics by sending a POST HTTP request from your server directly to Faenz to collect data regarding user visits, like before, but being sure that every visit is collected and not blocked by an ad-blocker or because the user has turned off Javascript.
 
 I'm planning to support more fields in the future for more advanced use cases.
 
@@ -59,24 +53,7 @@ You can selfhost Faenz just by using the docker image and running it with the ri
 
 ## Heroku
 
-The project has been written with Heroku in mind to it should be easy and not require much skills to setup. Deploying to Heroku requires a remote MySQL database instance since [Heroku can't host a SQLite database](https://devcenter.heroku.com/articles/sqlite3), so you have to setup the database credentials using Heroku variables.
-
-1. Fork this project
-2. Add your fork repository to Heroku
-3. Setup the required variables on the Heroku project dashboard or by using the CLI:
-
-- BUNDLE_WITHOUT => development:test:production:production_sqlite
-- DB => mysql
-- ADMIN_USERNAME
-- ADMIN_PASSWORD
-- DB_HOST
-- DB_PORT
-- DB_USER
-- DB_PSWD
-
-4. Deploy on Heroku
-
-The standard name for the database will be `faenz`, if you want to give a different name you can use the environment variable `DB_NAME`.
+We used to support Heroku in previous versions, using MySQL or MariaDB databases. In recent versions we preferred to only keep SQLite because [Heroku can't host a SQLite database](https://devcenter.heroku.com/articles/sqlite3).
 
 ## Render
 
@@ -91,7 +68,7 @@ As far as I know, you can host a SQLite database on render only with paid plans 
 
 3. Setup the required variables:
 
-- BUNDLE_WITHOUT => development:test:production:production_sqlite
+- BUNDLE_WITHOUT => development:test
 - DB => mysql
 - ADMIN_USERNAME
 - ADMIN_PASSWORD
@@ -108,8 +85,6 @@ The standard name for the database will be `faenz`, if you want to give a differ
 ## Run as a Docker container
 
 Docker images are hosted on a [public DockerHub repository](https://hub.docker.com/repository/docker/achris15/faenz).
-
-### SQLite
 
 By running Faenz with the SQLite database all the data are stored into a sqlite database created inside the docker container. It would be a really good idea to create a volume to persist the database on your file system and not lose it if something goes wrong with the container.
 The required variables to use Faenz with SQLite are:
@@ -140,28 +115,8 @@ services:
       - GEOIP_API_KEY (if you want to geolocate IPs)
 ```
 
-### MySQL
-
-By running Faenz with the MySQL database creates a connection to a "remote" MySQL or MariaDB database where all the data will be stored. This means that the database can be on another machine or server for wich you have to specify the public IP Address and the port, or it can just be a local service or docker container on the same machine, for wich you can specify "localhost" and the port.
-At the moment the MySQL mode is also used by Heroku to connect to a remote database.
-The required variables to use Faenz with MySQL/MariaDB are:
-
-- DB=mysql
-- ADMIN_USERNAME
-- ADMIN_PASSWORD
-- DB_HOST
-- DB_PORT
-- DB_PSWD
-- DB_USER
-
-e.g.
-
-```bash
-docker run -p 3000:3000 -e DB=mysql -e DB_HOST=... -e DB_PORT=3306 -e DB_PSWD=db_password -e DB_USER=db_user -e ADMIN_USERNAME=admin -e ADMIN_PASSWORD=test achris/faenz:latest
-```
-
 # IP Geolocation
-Faenz supports IP Geolocation by using the API provided by https://ipgeolocation.io, you can use the free plan that gives 30k requests per month and 1k daily, you just need to signup and save the API key into the environment variable `GEOIP_API_KEY`.
+Faenz supports IP Geolocation by using the https://ipgeolocation.io API, you can use the free plan that gives 30k requests per month and 1k daily, you just need to signup and save the API key into the environment variable `GEOIP_API_KEY`.
 
 # Build the container
 
@@ -190,11 +145,10 @@ docker build --tag faenz .
 - [x] Remove the NodeJS dependency by using a multi-stage Docker build
 - [x] Dark theme
 - [ ] Generate two docker images: one for SQLite, one for MySQL and include a reverse proxy solution
-- [ ] Support import and export of data, also compatible with Plausible exports
+- [ ] Support import and export of data, making it compatible with Plausible exports
 - [ ] Allow collecting extra and complex fields
 - [ ] Configurable charts (hide or add some charts)
 - [ ] Improve UI, design, fonts, colors
-- [ ] Test if Faenz works with Prostgres databases
 
 # Contributing
 

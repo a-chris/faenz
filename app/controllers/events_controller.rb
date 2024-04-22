@@ -14,9 +14,17 @@ class EventsController < ActionController::API
     domain = Domain.find_by(base_url: Domain.hotname(attrs[:domain]))
     return render json: { text: 'Domain not found' }, status: :bad_request if domain.nil?
 
-    geo = GeolocationIp.call(ip: request.ip)
     ip = IpDigester.call(ip: request.ip)
-    visit_attrs = attrs.except(:domain).merge(time_at: Time.now, domain_id: domain.id, ip: ip, geo: geo)
+    previous_visit = Visit.find_by(ip:, domain_id: domain.id)
+
+    geo =
+      if previous_visit.present?
+        previous_visit.geo
+      else
+        GeolocationIp.call(ip: request.ip)
+      end
+
+    visit_attrs = attrs.except(:domain).merge(time_at: Time.now, domain_id: domain.id, ip:, geo:)
     Visit.create!(visit_attrs)
 
     render json: { text: 'ok' }, status: :ok

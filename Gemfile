@@ -17,6 +17,8 @@ gem 'importmap-rails'
 
 gem 'turbo-rails'
 
+gem 'dartsass-rails'
+
 gem 'tzinfo-data'
 
 # Reduces boot times through caching; required in config/boot.rb

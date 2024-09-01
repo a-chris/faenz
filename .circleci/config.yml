@@ -9,7 +9,7 @@ orbs:
 jobs:
   rspec:
     docker:
-      - image: cimg/ruby:3.2.2
+      - image: cimg/ruby:3.2.3
     steps:
       - checkout
       - ruby/install-deps

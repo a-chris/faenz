@@ -48,4 +48,4 @@ TAGS
 /config/credentials/*.enc
 /config/credentials/*.key
 
-sqlite_db/*.sqlite3
+db/*.sqlite3

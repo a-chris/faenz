@@ -97,7 +97,7 @@ The required variables to use Faenz with SQLite are:
 e.g.
 
 ```bash
-docker run -p 3000:3000 -e DB=sqlite -e ADMIN_USERNAME=admin -e ADMIN_PASSWORD=test achris15/faenz:<version>
+docker run -p 3000:3000 -e ADMIN_USERNAME=admin -e ADMIN_PASSWORD=test achris15/faenz:<version>
 ```
 
 or you can create a `docker-compose.yml` file and run it with **doker-compose**
@@ -114,7 +114,7 @@ services:
       - ADMIN_PASSWORD=test
       - GEOIP_API_KEY (if you want to geolocate IPs)
     volumes:
-      - "./data:/faenz-analytics/sqlite_db"
+      - "./data:/faenz-analytics/db"
 ```
 
 adding a `volume` is recommended to not lose your data after destroying the container or depolying a new version.

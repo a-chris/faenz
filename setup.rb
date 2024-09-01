@@ -2,9 +2,7 @@
 # ber db:drop db:create db:migrate
 # ADMIN_USERNAME=admin ADMIN_PASSWORD=test DB=sqlite ber runner setup.rb -e production
 
-db_mode   = ENV['DB']
-# rails_env = db_mode == 'sqlite' ? 'production_sqlite' : 'production_mysql'
-rails_env = 'production_sqlite'
+rails_env = 'production'
 
 if File.exist?('_first_run')
   puts 'Running for the first time'

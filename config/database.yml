@@ -20,23 +20,8 @@ test:
   <<: *default
   database: db/test.sqlite3
 
-production_sqlite: &production_sqlite
+production:
   adapter: sqlite3
   timeout: 5000
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  database: sqlite_db/production.sqlite3
-
-production_mysql: &production_mysql
-  adapter: mysql2
-  encoding: utf8
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  timeout: 5000
-  database: <%= ENV.fetch("DB_NAME") { 'faenz' } %>
-  host: <%= ENV.fetch('DB_HOST') { Rails.application.credentials[:DB_HOST] } %>
-  port: <%= ENV.fetch('DB_PORT') { Rails.application.credentials[:DB_PORT] } %>
-  password: <%= ENV.fetch('DB_PSWD') { Rails.application.credentials[:DB_PSWD] } %>
-  username: <%= ENV.fetch('DB_USER') { Rails.application.credentials[:DB_USER] } %>
-  socket: /tmp/mysql.sock
-
-production:
-  <<: *production_sqlite
+  database: db/production.sqlite3

@@ -1,9 +1,9 @@
-FROM quay.io/evl.ms/fullstaq-ruby:3.2.2-jemalloc-bullseye-slim
+FROM quay.io/evl.ms/fullstaq-ruby:3.2.3-jemalloc-bookworm-slim
 WORKDIR /faenz-analytics
 RUN apt-get update
 RUN apt-get install -y libsqlite3-dev
 
-RUN gem install bundler -v 2.5.3
+RUN gem install bundler
 
 COPY Gemfile .
 COPY Gemfile.lock .
@@ -20,8 +20,7 @@ RUN apt-get install -y --no-install-recommends build-essential libyaml-dev && \
 COPY . .
 RUN touch _first_run
 RUN EDITOR="notexist" bin/rails credentials:edit
-RUN RAILS_ENV=production_sqlite bundle exec rails dartsass:install
-RUN RAILS_ENV=production_sqlite bundle exec rails assets:precompile
+RUN RAILS_ENV=production bundle exec rails assets:precompile
 
 EXPOSE 3000
 CMD ["bundle","exec","rails","runner", "setup.rb"]

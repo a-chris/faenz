@@ -3,8 +3,8 @@
 version: 2.1
 
 orbs:
-  ruby: circleci/ruby@2.1.0
-  docker: circleci/docker@2.1.5
+  ruby: circleci/ruby@2.1.4
+  docker: circleci/docker@2.6.0
 
 jobs:
   rspec:
@@ -25,7 +25,6 @@ workflows:
           docker-password: DOCKER_PASSWORD
           image: achris15/faenz
           tag: ${TAG_VERSION}
-          remote-docker-version: 20.10.14
           use-buildkit: true
           requires:
             - rspec

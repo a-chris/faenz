@@ -1,10 +1,10 @@
 class DomainsController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, unless: -> { ENV['DEMO_VERSION'] == 'true' }
   before_action :set_domain, only: %i[show edit update destroy]
 
   # GET /domains or /domains.json
   def index
-    @domains = current_user.domains
+    @domains = ENV['DEMO_VERSION'] == 'true' ? Domain.all : current_user.domains
   end
 
   # GET /domains/1 or /domains/1.json
@@ -20,7 +20,7 @@ class DomainsController < ApplicationController
 
   # POST /domains or /domains.json
   def create
-    @domain = Domain.new(user_id: current_user.id, **domain_params)
+    @domain = Domain.new(user_id: current_user&.id, **domain_params)
 
     respond_to do |format|
       if @domain.save
@@ -35,6 +35,8 @@ class DomainsController < ApplicationController
 
   # PATCH/PUT /domains/1 or /domains/1.json
   def update
+    return redirect_to domains_path if ENV['DEMO_VERSION'] == 'true'
+
     respond_to do |format|
       if @domain.update(domain_params)
         format.html { redirect_to domain_url(@domain), notice: "Domain was successfully updated." }
@@ -48,6 +50,8 @@ class DomainsController < ApplicationController
 
   # DELETE /domains/1 or /domains/1.json
   def destroy
+    return redirect_to domains_path if ENV['DEMO_VERSION'] == 'true'
+
     @domain.destroy
 
     respond_to do |format|
